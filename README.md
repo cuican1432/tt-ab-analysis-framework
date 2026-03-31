@@ -8,24 +8,10 @@ This repository helps teams run experiment analysis with a stable framework whil
 
 ## Quick Start | 快速开始
 
-### 1. Clone the Repo | 下载仓库
-
-把仓库 clone 到一个明确的分析工作目录，比如 `ab-workspace`：  
-Clone the repository into a clearly named analysis workspace such as `ab-workspace`:
-
-```bash
-mkdir -p ~/ab-workspace
-cd ~/ab-workspace
-git clone https://github.com/cuican1432/tt-ab-analysis-framework.git
-cd tt-ab-analysis-framework
-```
-
-### 2. Install the Skills | 安装 Skills
+### 1. Recommended Fast Path: Mira | 推荐快捷路径：Mira
 
 推荐优先使用 `Mira` 导入 zip 包。  
 Recommended path: use `Mira` to import the zip package first.
-
-#### Option A: Mira Zip Import (Recommended) | 用 Mira Zip 导入（推荐）
 
 如果你的环境支持 `Mira` 导入，优先用这条路径，最省事，也最接近分发态。  
 If your environment supports `Mira` import, use this path first. It is the simplest and closest to the distribution flow.
@@ -47,7 +33,19 @@ The fastest path is:
 如果你的目标只是尽快开始用，这条路径最推荐。  
 If your goal is simply to get started quickly, this is the recommended path.
 
-#### Option B: Codex Local Skills | 安装到 Codex
+### 2. Local Install Path | 本地安装路径
+
+如果你是在本地 `Codex` 或 `Trae` 环境里开发、调试或改 skill，本地路径才需要先 clone 仓库。  
+If you are developing, debugging, or editing skills locally in `Codex` or `Trae`, then you should clone the repo first.
+
+```bash
+mkdir -p ~/ab-workspace
+cd ~/ab-workspace
+git clone https://github.com/cuican1432/tt-ab-analysis-framework.git
+cd tt-ab-analysis-framework
+```
+
+#### Option A: Codex Local Skills | 安装到 Codex
 
 如果你是在本地 `Codex` 环境里开发或调试，可以这样安装主 skill：  
 If you are developing or debugging in a local `Codex` setup:
@@ -68,7 +66,7 @@ mkdir -p ~/.codex/skills/ab-metric-glossary
 cp -R skills/ab-metric-glossary/. ~/.codex/skills/ab-metric-glossary/
 ```
 
-#### Option C: Trae Local Skills | 安装到 Trae
+#### Option B: Trae Local Skills | 安装到 Trae
 
 如果你是 Trae 本地环境，skill 目录建议放到：  
 If you are using Trae locally, install the skills into:
