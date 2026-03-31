@@ -16,7 +16,8 @@ Recommended path: use `Mira` to import the zip package first.
 如果你的环境支持 `Mira` 导入，优先用这条路径，最省事，也最接近分发态。  
 If your environment supports `Mira` import, use this path first. It is the simplest and closest to the distribution flow.
 
-- [`release/mira/4265debcbeff43bb84fc2072c0e034c0.zip`](release/mira/4265debcbeff43bb84fc2072c0e034c0.zip)
+- `Mira` 版 `tt-ab-analysis-framework` 安装包：  
+  [`release/mira/4265debcbeff43bb84fc2072c0e034c0.zip`](release/mira/4265debcbeff43bb84fc2072c0e034c0.zip)
 
 最快的操作路径是：  
 The fastest path is:
