@@ -83,6 +83,22 @@ If helper skills are installed, verify:
 Expected result:
 
 - both helper skills exist and can be read
+- both helper skills keep their own `references/core/` and `references/knowledge/` folders after installation
+
+## Step 6: Helper Skill Reference Check
+
+If helper skills are installed, also verify these paths:
+
+- `~/.codex/skills/ab-experiment-analyst/references/core/index.md`
+- `~/.codex/skills/ab-experiment-analyst/references/core/workflow.md`
+- `~/.codex/skills/ab-experiment-analyst/references/knowledge/metric_glossary.md`
+- `~/.codex/skills/ab-metric-glossary/references/core/index.md`
+- `~/.codex/skills/ab-metric-glossary/references/core/rules.md`
+- `~/.codex/skills/ab-metric-glossary/references/knowledge/metric_glossary.md`
+
+Expected result:
+
+- helper-skill references also resolve after installation
 
 ## Pass Criteria
 
@@ -92,7 +108,8 @@ The smoke test passes when:
 - installation succeeds,
 - the main skill remains self-contained after installation,
 - the referenced `core` and `knowledge` files are present,
-- the three main usage modes are still visible.
+- the three main usage modes are still visible,
+- and optional helper skills remain self-contained when installed.
 
 ## Notes
 

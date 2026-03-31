@@ -44,6 +44,9 @@ mkdir -p ~/.codex/skills/ab-metric-glossary
 cp -R skills/ab-metric-glossary/. ~/.codex/skills/ab-metric-glossary/
 ```
 
+这两个 helper skill 现在也都是自包含结构，复制目录时会一并带上它们依赖的 `references/`。  
+These two helper skills are also self-contained now, so copying the directory also carries their required `references/`.
+
 ### 3. Start Using It | 直接开始用
 
 对大多数使用者来说，到这里就可以直接开始用了，不需要先读一堆框架文档。  

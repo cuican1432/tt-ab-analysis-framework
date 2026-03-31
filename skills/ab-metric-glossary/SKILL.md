@@ -13,15 +13,15 @@ Use this skill when the task involves:
 - deciding whether a metric group should be recalled,
 - or supporting Stage B / C interpretation with safer metric language.
 
-Read these framework files first:
+If you want more context, read these framework files:
 
-- `../../core/index.md`
-- `../../core/rules.md`
+- `./references/core/index.md`
+- `./references/core/rules.md`
 
 Use these knowledge files as the primary source:
 
-- `../../knowledge/metric_glossary.md`
-- `../../knowledge/business_kb.md`
+- `./references/knowledge/metric_glossary.md`
+- `./references/knowledge/business_kb.md`
 
 ## Core role
 

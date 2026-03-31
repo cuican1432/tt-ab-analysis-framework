@@ -7,19 +7,19 @@ description: Rigorous A/B experiment analyst for doc-sourced or live-report A/B 
 
 Use this skill for A/B experiments when the task is to read a PRD or raw-data document, extract report facts, write an experiment report, or evaluate a draft against an eval set.
 
-Read these framework files first:
+If you want more context, read these framework files:
 
-- `../../core/index.md`
-- `../../core/workflow.md`
-- `../../core/rules.md`
-- `../../core/memory.md`
-- `../../core/runbook.md`
-- `../../core/tooling.md`
+- `./references/core/index.md`
+- `./references/core/workflow.md`
+- `./references/core/rules.md`
+- `./references/core/memory.md`
+- `./references/core/runbook.md`
+- `./references/core/tooling.md`
 
 Use these knowledge files as needed:
 
-- `../../knowledge/metric_glossary.md`
-- `../../knowledge/business_kb.md`
+- `./references/knowledge/metric_glossary.md`
+- `./references/knowledge/business_kb.md`
 
 ## Core posture
 
@@ -28,7 +28,7 @@ Use these knowledge files as needed:
 - If a metric is not significant, keep the wording directional.
 - If data is missing, write `[missing]` or `data missing`.
 - Treat PRD facts as the source of truth for experiment object and metric priority.
-- Completed A / B / C / D outputs are case-local only.
+- Finished tables, conclusions, and reports from one experiment belong to that experiment only.
 
 ## Standard workflow
 
