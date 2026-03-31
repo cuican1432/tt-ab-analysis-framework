@@ -24,8 +24,16 @@ Use this default order for experiment analysis:
 Use live Libra extraction only when:
 
 - the task explicitly requires live report reading,
+- a Libra link/page is explicitly provided,
 - the available docs are insufficient,
 - or a validation task requires DOM-backed extraction.
+
+Treat live Libra extraction as a beta path. When a Libra source is involved, prefer this normal flow first:
+
+1. open Libra `conclusion report`,
+2. switch to the appropriate template,
+3. export the document,
+4. analyze the exported doc as the primary source.
 
 When live Libra extraction is needed:
 

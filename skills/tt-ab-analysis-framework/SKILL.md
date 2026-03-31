@@ -125,6 +125,8 @@ Use these knowledge files as the main reusable knowledge store:
 
 - Prefer doc-first analysis.
 - Read PRD, raw-data docs, screenshots, and tables before considering live browser extraction.
+- Treat live Libra extraction as a beta path; it is useful but not fully stable.
+- Prefer Libra `conclusion report -> switch template -> export document` as the normal path when a Libra source is involved.
 - Use live Libra extraction only when a Libra link/page is explicitly provided or required, or when the available docs are insufficient.
 - Keep missing data missing.
 - Keep global evidence as the main decision evidence.

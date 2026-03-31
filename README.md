@@ -233,6 +233,14 @@ Put updateable knowledge here:
 
 - 优先读 PRD、raw data 文档、截图、表格。  
   Prefer PRD, raw-data docs, screenshots, and tables first.
+- live Libra 抽取目前是 `beta` 版本，能力仍不稳定；默认不作为首选输入源。  
+  Live Libra extraction is currently in `beta` and is not fully stable; it should not be the default input path.
+- 更推荐的路径是：先在 Libra 平台进入“结论报告”，切换到合适模板后导出文档，再基于导出文档做分析。  
+  The recommended path is to open Libra `conclusion report`, switch to the appropriate template, export the document, and analyze the exported document instead.
+- Libra 平台链接参考：`https://libra-sg.tiktok-row.net/libra/flight/70831448/conclusion-report?category=defense&target_active_tab=defense&template_id=backup-582`  
+  Example Libra conclusion-report link: `https://libra-sg.tiktok-row.net/libra/flight/70831448/conclusion-report?category=defense&target_active_tab=defense&template_id=backup-582`
+- 导出后文档参考：`https://bytedance.larkoffice.com/docx/L2kwdjvt5oLCwsxbB7Wc6uMRnud`  
+  Example exported document: `https://bytedance.larkoffice.com/docx/L2kwdjvt5oLCwsxbB7Wc6uMRnud`
 - 只有明确提供了 Libra 链接、明确要求读取 Libra 页面，或现有文档不足以支撑分析时，才做 live Libra 抽取。  
   Use live Libra extraction only when a Libra link/page is explicitly provided or required, or when the available docs are not sufficient for the analysis.
 - 缺失数据就保留缺失。  
