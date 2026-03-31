@@ -70,6 +70,12 @@ The simplest validation flow is:
 3. 看它能否走通 doc-first 分析路径，并产出结构化实验报告  
    Check whether it can follow the doc-first analysis path and produce a structured report
 
+烟测时有一条硬规则：  
+There is one hard rule for smoke tests:
+
+- 必须从当前提供的链接重新读取 source，不能借用任何历史文件、历史报告或已有中间产物。  
+  Always reread the source from the currently provided links. Do not reuse historical files, prior reports, or existing intermediate artifacts.
+
 ### 3. Start Using It | 直接开始用
 
 对大多数使用者来说，到这里就可以直接开始用了，不需要先读一堆框架文档。  

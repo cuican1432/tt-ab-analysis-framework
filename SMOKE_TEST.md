@@ -2,6 +2,11 @@
 
 This file is a practical checklist for validating that the framework can be downloaded, installed, and referenced correctly.
 
+Hard rule:
+
+- A smoke test must start from the currently provided source links.
+- Do not reuse historical files, prior reports, or existing intermediate artifacts.
+
 ## Goal
 
 Verify three things:
@@ -109,7 +114,8 @@ The smoke test passes when:
 - the main skill remains self-contained after installation,
 - the referenced `core` and `knowledge` files are present,
 - the three main usage modes are still visible,
-- and optional helper skills remain self-contained when installed.
+- optional helper skills remain self-contained when installed,
+- and the tested result is produced from freshly reread source links rather than historical local artifacts.
 
 ## Notes
 

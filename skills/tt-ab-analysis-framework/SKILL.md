@@ -169,5 +169,7 @@ This means:
 
 - Never fabricate metrics, setup fields, or conclusions.
 - Never reuse an old experiment's finished outputs as evidence for a new one.
+- For smoke tests and fresh case runs, always reread the currently provided source links.
+- Do not use historical files, prior reports, or existing intermediate artifacts as substitutes for the current source input.
 - Do not promote a single extreme slice into an independent conclusion.
 - Do not let temporary guidance break hard evidence rules.
