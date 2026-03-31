@@ -30,7 +30,7 @@ For a Codex-style local install:
 
 ```bash
 mkdir -p ~/.codex/skills/tt-ab-analysis-framework
-cp -R skills/tt-ab-analysis-framework/* ~/.codex/skills/tt-ab-analysis-framework/
+cp -R skills/tt-ab-analysis-framework/. ~/.codex/skills/tt-ab-analysis-framework/
 ```
 
 ### 2. Read

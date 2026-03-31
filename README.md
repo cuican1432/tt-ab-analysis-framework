@@ -27,7 +27,7 @@ For a Codex-style local skill setup, install the main skill like this:
 
 ```bash
 mkdir -p ~/.codex/skills/tt-ab-analysis-framework
-cp -R skills/tt-ab-analysis-framework/* ~/.codex/skills/tt-ab-analysis-framework/
+cp -R skills/tt-ab-analysis-framework/. ~/.codex/skills/tt-ab-analysis-framework/
 ```
 
 主 skill 当前已经是自包含结构，复制这个目录时会一并带上它依赖的 `references/`。  
@@ -38,10 +38,10 @@ If you also want the helper skills:
 
 ```bash
 mkdir -p ~/.codex/skills/ab-experiment-analyst
-cp -R skills/ab-experiment-analyst/* ~/.codex/skills/ab-experiment-analyst/
+cp -R skills/ab-experiment-analyst/. ~/.codex/skills/ab-experiment-analyst/
 
 mkdir -p ~/.codex/skills/ab-metric-glossary
-cp -R skills/ab-metric-glossary/* ~/.codex/skills/ab-metric-glossary/
+cp -R skills/ab-metric-glossary/. ~/.codex/skills/ab-metric-glossary/
 ```
 
 ### 3. Read First | 先读什么
