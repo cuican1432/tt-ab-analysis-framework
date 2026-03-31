@@ -148,6 +148,26 @@ You do not need to fill the whole glossary in one shot. A better pattern is:
 3. 你再补充、纠正和确认  
    then review, correct, and confirm
 
+这里有一个很重要的分层：  
+There is one important split to keep in mind:
+
+- `knowledge/drafts/`
+  - 放**还在 review 的知识草稿**
+  - 适合存：待确认项、空字段、placeholder、下一轮要继续补的内容
+- `knowledge/metric_glossary.md` 和 `knowledge/business_kb.md`
+  - 放**已经确认、可以复用的正式知识**
+  - 适合存：稳定的指标组名、维度名、术语解释、polarity、业务知识
+
+也就是说：  
+In other words:
+
+- 确认过的内容，应该进入正式库  
+  confirmed content should move into the formal knowledge files
+- 没确认完的内容，继续留在 `drafts/`  
+  unfinished content should stay in `drafts/`
+- `drafts/` 不应该长期堆已经确认完的条目  
+  `drafts/` should not keep confirmed entries forever
+
 如果你已经有一版 glossary 初稿，可以直接这样说 👇  
 If you already have a glossary draft, you can say:
 
@@ -184,6 +204,16 @@ What the system will do:
   leave uncertain fields blank instead of guessing
 - 最后把仍需你确认的问题单独列出来  
   list the remaining items that still need your confirmation
+
+确认完成后，推荐这样流转：  
+After review, use this flow:
+
+1. 把已确认的条目并入正式库  
+   move confirmed entries into the formal knowledge files
+2. 把仍未确认的部分继续留在 `knowledge/drafts/`  
+   keep unfinished parts in `knowledge/drafts/`
+3. 下一轮只继续修还没定稿的部分  
+   in the next round, continue only from the unfinished parts
 
 #### Scenario 2: Report Generation | 场景二：一键生成实验报告
 
