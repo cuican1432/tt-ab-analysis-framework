@@ -22,10 +22,20 @@ cd tt-ab-analysis-framework
 
 ### 2. Install the Skills | 安装 Skills
 
-#### Option A: Codex Local Skills | 安装到 Codex
+推荐优先使用 `Mira` 导入 zip 包。  
+Recommended path: use `Mira` to import the zip package first.
 
-如果你是 Codex 风格本地 skill 环境，可以这样安装主 skill：  
-For a Codex-style local skill setup:
+#### Option A: Mira Zip Import (Recommended) | 用 Mira Zip 导入（推荐）
+
+如果你的环境支持 `Mira` 导入，优先用这条路径，最省事，也最接近分发态。  
+If your environment supports `Mira` import, use this path first. It is the simplest and closest to the distribution flow.
+
+- [`release/mira/4265debcbeff43bb84fc2072c0e034c0.zip`](release/mira/4265debcbeff43bb84fc2072c0e034c0.zip)
+
+#### Option B: Codex Local Skills | 安装到 Codex
+
+如果你是在本地 `Codex` 环境里开发或调试，可以这样安装主 skill：  
+If you are developing or debugging in a local `Codex` setup:
 
 ```bash
 mkdir -p ~/.codex/skills/tt-ab-analysis-framework
@@ -43,7 +53,7 @@ mkdir -p ~/.codex/skills/ab-metric-glossary
 cp -R skills/ab-metric-glossary/. ~/.codex/skills/ab-metric-glossary/
 ```
 
-#### Option B: Trae Local Skills | 安装到 Trae
+#### Option C: Trae Local Skills | 安装到 Trae
 
 如果你是 Trae 本地环境，skill 目录建议放到：  
 If you are using Trae locally, install the skills into:
@@ -58,13 +68,6 @@ cp -R skills/ab-experiment-analyst/. /Users/bytedance/Documents/trae_projects/.t
 mkdir -p /Users/bytedance/Documents/trae_projects/.trae/skills/ab-metric-glossary
 cp -R skills/ab-metric-glossary/. /Users/bytedance/Documents/trae_projects/.trae/skills/ab-metric-glossary/
 ```
-
-#### Option C: Mira Zip Import | 用 Mira Zip 导入
-
-如果你的环境更适合 zip 导入，可以使用仓库里这份包：  
-If your environment prefers zip-based import, use this package in the repo:
-
-- [`release/mira/4265debcbeff43bb84fc2072c0e034c0.zip`](release/mira/4265debcbeff43bb84fc2072c0e034c0.zip)
 
 #### Important Runtime Note | 运行时注意事项
 
