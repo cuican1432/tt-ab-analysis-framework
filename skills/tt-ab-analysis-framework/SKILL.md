@@ -53,7 +53,7 @@ Use one of these patterns:
 
 ### 4. Scenario Mapping
 
-#### Scenario 2: Experiment report generation
+#### Primary Scenario: Experiment report generation
 
 Use this for a full PRD + raw-data driven report.
 
@@ -72,7 +72,7 @@ System behavior:
 - perform drill-down attribution and risk review when needed,
 - generate a structured experiment report with gains, risks, and evidence boundaries visible.
 
-#### Scenario 3: Temporary metric / rule guidance
+#### Secondary Scenario: Temporary metric / rule guidance
 
 Use this for one-run-only overrides that should not be written into the reusable knowledge store.
 
@@ -91,7 +91,7 @@ System behavior:
 - never let it override hard framework rules,
 - avoid writing it into the long-term knowledge base unless explicitly requested.
 
-#### Scenario 1: Knowledge ingestion
+#### Optional Scenario: Knowledge ingestion
 
 Use this for durable glossary, polarity, and business-note updates.
 
@@ -107,6 +107,7 @@ System behavior:
 - keep the stored form compact,
 - update the reusable knowledge layer,
 - return a short confirmation by default instead of a long write-up.
+- do not treat old experiment tables, conclusions, or reports as reusable knowledge.
 
 If more context is needed, read these framework files:
 
@@ -133,25 +134,9 @@ Use these knowledge files as the main reusable knowledge store:
 - Keep global evidence as the main decision evidence.
 - Use drilldown and slice evidence to explain why the global result holds.
 
-## Mode 1: Knowledge Ingestion
+## Storage Boundaries
 
-Use this mode when the user wants to store reusable metric or business knowledge for future runs.
-
-Examples:
-
-- a new metric dictionary
-- a new polarity rule
-- a business-term explanation
-- a domain note about how to read a metric family
-
-Expected behavior:
-
-- extract the durable knowledge only,
-- write it into the appropriate knowledge file,
-- keep the stored form compact and reusable,
-- do not produce a long report unless the user asks for one.
-
-What belongs in knowledge ingestion:
+Reusable knowledge may include:
 
 - metric name -> meaning
 - metric name -> polarity
@@ -159,42 +144,11 @@ What belongs in knowledge ingestion:
 - business term -> explanation
 - product mechanism -> stable interpretation note
 
-What does not belong in knowledge ingestion:
+Do not store these as reusable knowledge by default:
 
 - one-off experiment conclusions
 - temporary run-only clarifications
 - finished tables, conclusions, or reports from an old experiment
-
-## Mode 2: Experiment Report Generation
-
-Use this mode when the user wants a full experiment report.
-
-Expected behavior:
-
-1. read source materials,
-2. consult stored knowledge,
-3. identify targets, guardrails, and mechanism clues,
-4. build the recall set,
-5. extract or read Stage A facts from the relevant source,
-6. write B,
-7. write C,
-8. run D when required.
-
-## Mode 3: Temporary Metric / Rule Guidance
-
-Use this mode when the user wants a one-run-only clarification.
-
-Examples:
-
-- a temporary polarity note
-- a temporary interpretation note
-- a one-off rule for this experiment only
-
-Expected behavior:
-
-- apply the temporary note to the current run only,
-- do not write it into the reusable knowledge store unless the user explicitly asks to store it,
-- make the precedence explicit when needed.
 
 ## Precedence
 
@@ -210,20 +164,6 @@ This means:
 - temporary instructions can override stored knowledge for the current run,
 - temporary instructions cannot override hard framework rules,
 - stored knowledge should guide interpretation when no temporary rule is given.
-
-## Suggested user prompts
-
-### Knowledge ingestion
-
-`Please use tt-ab-analysis-framework to ingest experiment knowledge.`
-
-### Report generation
-
-`Please use tt-ab-analysis-framework to generate an experiment report.`
-
-### Report generation with temporary guidance
-
-`Please use tt-ab-analysis-framework to generate an experiment report with this temporary metric/rule guidance.`
 
 ## Guardrails
 
