@@ -154,10 +154,12 @@ There is one important split to keep in mind:
 - `knowledge/drafts/`
   - 放**还在 review 的知识草稿**
   - 适合存：待确认项、空字段、placeholder、下一轮要继续补的内容
-- `knowledge/metric_glossary.md` 和 `knowledge/business_kb.md`
+- `knowledge/metric_glossary.md`、`knowledge/glossary/` 和 `knowledge/business_kb.md`
   - 放**已经确认、可以复用的正式知识**
-  - 适合存：稳定的指标组名、维度名、术语解释、polarity、业务知识
-  - 其中 `metric_glossary.md` 里涉及中文名称、中文含义、polarity、priority 这类关键字段时，与用户确认时优先使用**中文交流**；确认后再写入正式库
+  - `metric_glossary.md` 是 glossary 总入口
+  - `glossary/` 是真正的正式 glossary 存储
+  - `business_kb.md` 放正式的业务知识索引
+  - 其中 glossary 涉及中文名称、中文含义、polarity、priority 这类关键字段时，与用户确认时优先使用**中文交流**；确认后再写入正式库
 
 也就是说：  
 In other words:

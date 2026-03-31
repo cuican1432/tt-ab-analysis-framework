@@ -152,6 +152,9 @@ If more context is needed, read these framework files:
 Use these knowledge files as the main reusable knowledge store:
 
 - `./references/knowledge/metric_glossary.md`
+- `./references/knowledge/glossary/metric_groups.md`
+- `./references/knowledge/glossary/dimensions.md`
+- `./references/knowledge/metric_glossary_guide.md`
 - `./references/knowledge/business_kb.md`
 
 ## Main behavior
@@ -176,6 +179,10 @@ Use these knowledge files as the main reusable knowledge store:
   - business meaning,
   - and next validation or rollout implication.
 - When knowledge ingestion is requested, organize raw knowledge into a structured draft first if the source is long, mixed, or incomplete.
+- Keep glossary storage and explanation separated:
+  - use `metric_glossary.md` as the glossary index entry,
+  - use `glossary/` for actual formal confirmed entries,
+  - use `metric_glossary_guide.md` for templates, field explanations, and update instructions.
 - Treat the business knowledge layer as index-first.
 - Do not read or summarize the entire business KB by default; locate the relevant topic and pull only what the current case needs.
 - For glossary drafts, do not make the user inspect the whole draft blindly; always surface a short `to confirm` list that says exactly what still needs review.

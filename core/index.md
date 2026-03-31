@@ -22,6 +22,12 @@ The simplest mental model is:
   `knowledge/drafts/` stores knowledge drafts that are still under review
 - `knowledge/business_kb.md` 更像“业务知识索引”  
   `knowledge/business_kb.md` is better treated as an index-first business knowledge layer
+- `knowledge/metric_glossary.md` 更像“formal glossary 的总索引入口”  
+  `knowledge/metric_glossary.md` is better treated as the top-level index entry for the formal glossary
+- `knowledge/glossary/` 放真正的正式 glossary 存储  
+  `knowledge/glossary/` stores the actual formal glossary entries
+- `knowledge/metric_glossary_guide.md` 放 glossary 说明、模板和更新规则  
+  `knowledge/metric_glossary_guide.md` stores the glossary guide, templates, and update rules
 
 ## Read Order
 
@@ -51,6 +57,15 @@ The simplest mental model is:
 - `knowledge/drafts/`
   - review-stage glossary and business-knowledge drafts
   - partial work that should not yet be treated as formal knowledge
+- `knowledge/metric_glossary.md`
+  - formal glossary index entry
+  - points to the actual formal glossary storage
+- `knowledge/glossary/`
+  - actual formal glossary storage
+  - split by metric groups and dimensions
+- `knowledge/metric_glossary_guide.md`
+  - glossary instructions and templates
+  - keep explanation separate from storage
 
 ## Editing Boundary
 
@@ -62,6 +77,8 @@ Use this simple split:
   - the main skill's guardrails
 - safe to extend
   - `knowledge/metric_glossary.md`
+  - `knowledge/glossary/`
+  - `knowledge/metric_glossary_guide.md`
   - `knowledge/business_kb.md`
 - change with a short rationale
   - `runbook.md`
