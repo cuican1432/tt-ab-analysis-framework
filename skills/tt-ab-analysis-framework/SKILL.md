@@ -9,9 +9,9 @@ Use this as the main user-facing skill for TT-style A/B experiment work.
 
 This skill supports three common modes:
 
-1. knowledge ingestion
-2. experiment report generation
-3. report generation with temporary metric or rule guidance
+1. experiment report generation
+2. report generation with temporary metric or rule guidance
+3. knowledge ingestion
 
 ## Quick Start
 
@@ -54,34 +54,17 @@ Use one of these patterns:
 
 ### 4. Scenario Mapping
 
-#### Scenario 1: Knowledge ingestion
-
-Use this for durable glossary, polarity, and business-note updates.
-
-Typical user input:
-
-- metric glossary text
-- Feishu knowledge doc link
-- business term notes
-- polarity guidance such as `block/user decreasing is good`
-
-System behavior:
-
-- extract durable knowledge only,
-- keep the stored form compact,
-- update the reusable knowledge layer,
-- return a short confirmation by default instead of a long write-up.
-
 #### Scenario 2: Experiment report generation
 
 Use this for a full PRD + raw-data driven report.
 
 Typical user input:
 
-- experiment name
-- PRD link
-- raw data link
-- optional screenshots or tables
+- `Please use tt-ab-analysis-framework to generate an experiment report.`
+- `Experiment name (optional): [example: DM Personalized Bubble]`
+- `PRD link: [URL]`
+- `Raw Data link: [URL]`
+- `Optional screenshots or tables: [URL or pasted content]`
 
 System behavior:
 
@@ -96,9 +79,11 @@ Use this for one-run-only overrides that should not be written into the reusable
 
 Typical user input:
 
-- temporary metric polarity
-- one-off interpretation note
-- experiment-specific rule guidance
+- `Please use tt-ab-analysis-framework to generate an experiment report with this temporary metric/rule guidance.`
+- `Experiment name (optional): [xxx]`
+- `PRD link: [URL]`
+- `Raw Data link: [URL]`
+- `Temporary metric guidance: [example: click_report increasing means worsening risk in this experiment]`
 
 System behavior:
 
@@ -106,6 +91,23 @@ System behavior:
 - let it override stored knowledge for this run,
 - never let it override hard framework rules,
 - avoid writing it into the long-term knowledge base unless explicitly requested.
+
+#### Scenario 1: Knowledge ingestion
+
+Use this for durable glossary, polarity, and business-note updates.
+
+Typical user input:
+
+- `Please use tt-ab-analysis-framework to ingest experiment knowledge.`
+- `Metric glossary / knowledge input: [Feishu URL or pasted text]`
+- `Optional polarity hint: [example: block/user decreasing is good]`
+
+System behavior:
+
+- extract durable knowledge only,
+- keep the stored form compact,
+- update the reusable knowledge layer,
+- return a short confirmation by default instead of a long write-up.
 
 Read these framework files first:
 
