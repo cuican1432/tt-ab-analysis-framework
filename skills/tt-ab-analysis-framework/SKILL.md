@@ -33,14 +33,13 @@ mkdir -p ~/.codex/skills/tt-ab-analysis-framework
 cp -R skills/tt-ab-analysis-framework/. ~/.codex/skills/tt-ab-analysis-framework/
 ```
 
-### 2. Read
+### 2. Optional Reading
 
-Read these files first:
+Most users do not need to read the framework files first. If you want a little more context, skim these:
 
 1. `./references/core/index.md`
 2. `./references/core/workflow.md`
 3. `./references/core/rules.md`
-4. `./references/core/memory.md`
 
 ### 3. Use
 
@@ -109,7 +108,7 @@ System behavior:
 - update the reusable knowledge layer,
 - return a short confirmation by default instead of a long write-up.
 
-Read these framework files first:
+If more context is needed, read these framework files:
 
 - `./references/core/index.md`
 - `./references/core/workflow.md`
@@ -127,7 +126,7 @@ Use these knowledge files as the main reusable knowledge store:
 
 - Prefer doc-first analysis.
 - Read PRD, raw-data docs, screenshots, and tables before considering live browser extraction.
-- Treat live Libra extraction as a beta path; it is useful but not fully stable.
+- Treat live Libra extraction through direct browser reading of a Libra link/page as a beta path; it is useful but not fully stable.
 - Prefer Libra `conclusion report -> switch template -> export document` as the normal path when a Libra source is involved.
 - Use live Libra extraction only when a Libra link/page is explicitly provided or required, or when the available docs are insufficient.
 - Keep missing data missing.
@@ -164,7 +163,7 @@ What does not belong in knowledge ingestion:
 
 - one-off experiment conclusions
 - temporary run-only clarifications
-- finished A / B / C / D outputs
+- finished tables, conclusions, or reports from an old experiment
 
 ## Mode 2: Experiment Report Generation
 

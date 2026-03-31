@@ -6,8 +6,8 @@
 - Keep missing data missing.
 - Keep non-significant results directional, not overstated.
 - Treat PRD facts as the source of truth for experiment object and metric priority.
-- Completed A / B / C / D outputs are case-local only.
-- Never reuse one experiment's finished outputs as evidence or template for a new experiment.
+- Finished outputs from one experiment belong to that experiment only.
+- Never reuse an old experiment's finished tables, conclusions, or report as evidence for a new experiment.
 
 ## Evidence Discipline
 
