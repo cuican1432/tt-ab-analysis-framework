@@ -118,6 +118,9 @@ mkdir -p ~/.codex/skills/tt-ab-analysis-framework
 cp -R skills/tt-ab-analysis-framework/* ~/.codex/skills/tt-ab-analysis-framework/
 ```
 
+主 skill 当前已经是自包含结构，复制这个目录时会一并带上它依赖的 `references/`。  
+The main skill is now self-contained, so copying this directory also copies the `references/` files it depends on.
+
 如果你也想安装辅助 skill：  
 If you also want the helper skills:
 

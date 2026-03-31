@@ -37,10 +37,10 @@ cp -R skills/tt-ab-analysis-framework/* ~/.codex/skills/tt-ab-analysis-framework
 
 Read these files first:
 
-1. `../../README.md`
-2. `../../core/index.md`
-3. `../../core/workflow.md`
-4. `../../core/rules.md`
+1. `./references/core/index.md`
+2. `./references/core/workflow.md`
+3. `./references/core/rules.md`
+4. `./references/core/memory.md`
 
 ### 3. Use
 
@@ -61,17 +61,17 @@ Then use one of these prompts:
 
 Read these framework files first:
 
-- `../../core/index.md`
-- `../../core/workflow.md`
-- `../../core/rules.md`
-- `../../core/memory.md`
-- `../../core/runbook.md`
-- `../../core/tooling.md`
+- `./references/core/index.md`
+- `./references/core/workflow.md`
+- `./references/core/rules.md`
+- `./references/core/memory.md`
+- `./references/core/runbook.md`
+- `./references/core/tooling.md`
 
 Use these knowledge files as the main reusable knowledge store:
 
-- `../../knowledge/metric_glossary.md`
-- `../../knowledge/business_kb.md`
+- `./references/knowledge/metric_glossary.md`
+- `./references/knowledge/business_kb.md`
 
 ## Main behavior
 
