@@ -157,6 +157,7 @@ There is one important split to keep in mind:
 - `knowledge/metric_glossary.md` 和 `knowledge/business_kb.md`
   - 放**已经确认、可以复用的正式知识**
   - 适合存：稳定的指标组名、维度名、术语解释、polarity、业务知识
+  - 其中 `metric_glossary.md` 里涉及中文名称、中文含义、polarity、priority 这类关键字段时，与用户确认时优先使用**中文交流**；确认后再写入正式库
 
 也就是说：  
 In other words:
@@ -210,6 +211,7 @@ After review, use this flow:
 
 1. 把已确认的条目并入正式库  
    move confirmed entries into the formal knowledge files
+   - 对 `metric_glossary.md`，涉及名称、含义、polarity、priority 等关键字段时，优先按中文确认结果入库
 2. 把仍未确认的部分继续留在 `knowledge/drafts/`  
    keep unfinished parts in `knowledge/drafts/`
 3. 下一轮只继续修还没定稿的部分  
