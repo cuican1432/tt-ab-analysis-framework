@@ -6,6 +6,7 @@
 - Keep missing data missing.
 - Keep non-significant results directional, not overstated.
 - Treat PRD facts as the source of truth for experiment object and metric priority.
+- If the PRD includes product images, screenshots, or visual comparison tables, treat them as part of the source evidence when the runtime can read images.
 - Finished outputs from one experiment belong to that experiment only.
 - Never reuse an old experiment's finished tables, conclusions, or report as evidence for a new experiment.
 
@@ -92,6 +93,7 @@ When useful, label claims as:
 Use whichever route closes the explanation loop best.
 
 Do not invent psychology or user motivation without hard support.
+When reading product-mechanism differences from a PRD, read concrete deltas at the feature level: entry points, triggers, page flow, permissions, supported objects, interaction changes, and effect scope.
 
 When investigating attribution, check the most relevant of these directions:
 

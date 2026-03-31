@@ -136,6 +136,8 @@ Use these knowledge files as the main reusable knowledge store:
 - Keep missing data missing.
 - Keep global evidence as the main decision evidence.
 - Use drilldown and slice evidence to explain why the global result holds.
+- If the PRD contains product images, UI mocks, or annotated screenshots, read them as part of the PRD whenever the model/runtime has image-reading ability.
+- When reading PRD changes or arm differences, do not stop at one-line summaries; read down to concrete product deltas such as entry points, triggers, page flow, permissions, supported objects, interaction changes, and effect scope.
 
 ## Storage Boundaries
 
@@ -176,3 +178,8 @@ This means:
 - Do not use historical files, prior reports, or existing intermediate artifacts as substitutes for the current source input.
 - Do not promote a single extreme slice into an independent conclusion.
 - Do not let temporary guidance break hard evidence rules.
+- If an experiment has multiple treatment arms, the report must not stop at separate arm summaries.
+- For multi-arm experiments, the report must explicitly compare the arms and state which arm is better overall, which arm is weaker overall, and what that means for the decision.
+- For multi-arm experiments, include a dedicated comparison section instead of leaving the comparison implicit across separate sections.
+- Do not write fine-grained product-mechanism differences across arms unless the source explicitly shows the relevant config or description differences.
+- If the PRD includes product screenshots, mocks, or visual diff tables that clarify arm differences, treat them as source evidence and read them before writing mechanism comparisons.
