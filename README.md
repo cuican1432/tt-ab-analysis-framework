@@ -279,11 +279,8 @@ What the system will do:
   write them into the local knowledge layer so future reports can reuse them automatically
 - 默认只回一个简短确认，而不是长篇输出  
   return a short confirmation by default instead of a long write-up
-
-#### Glossary Update Loop | Glossary 迭代更新怎么做
-
-你不需要一次把 glossary 填全。更推荐的方式是：  
-You do not need to fill the whole glossary in one shot. A better pattern is:
+- 如果 source 很长、很杂或信息不完整，默认走这条 ingestion 流程：  
+  if the source is long, mixed, or incomplete, default to this ingestion flow:
 
 1. 先给一版知识库或初稿  
    start from a knowledge base or a rough draft
