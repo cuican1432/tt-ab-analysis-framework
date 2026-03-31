@@ -195,6 +195,28 @@ tt-ab-analysis-framework/
       SKILL.md
 ```
 
+`core/` 里的几个文档可以这样理解：  
+You can read the files under `core/` like this:
+
+- `workflow.md`
+  - 讲默认流程怎么跑，尤其是 doc-first 路径和什么时候才进入 live Libra 分支。  
+    Describes the default workflow, especially the doc-first path and when to enter the live Libra branch.
+- `rules.md`
+  - 讲不能破的硬规则和证据纪律，比如不能编造、Global 优先、slice 不能乱升格。  
+    Covers the hard rules and evidence discipline, such as no fabrication, global-over-slice logic, and no overpromotion of slices.
+- `memory.md`
+  - 讲这套框架希望长期记住的默认共识和稳定约定。  
+    Stores durable conventions and shared defaults that the framework should keep remembering.
+- `runbook.md`
+  - 讲实际执行时的操作习惯和落地方式，更像执行手册。  
+    Explains execution habits and practical operating steps, more like a runbook.
+- `tooling.md`
+  - 讲不同工具和输入源怎么选，比如文档、导出文档、浏览器读取分别适合什么场景。  
+    Explains tooling and source choices, such as when to use docs, exported docs, or browser reading.
+- `index.md`
+  - 讲总导航，帮你决定先看哪份文件。  
+    Acts as the navigation page that helps you decide what to open first.
+
 ## How A / B / C / D Fit Together | A / B / C / D 架构说明
 
 这个框架内部虽然会分成 A / B / C / D 四个阶段，但你可以把它理解成一条很直观的流水线：  
