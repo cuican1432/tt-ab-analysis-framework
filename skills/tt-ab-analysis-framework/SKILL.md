@@ -7,11 +7,11 @@ description: Main entry skill for TT A/B experiment work. Use when you want to i
 
 Use this as the main user-facing skill for TT-style A/B experiment work.
 
-This skill supports three common modes:
+Think of this skill as the single front door for three common jobs:
 
-1. experiment report generation
-2. report generation with temporary metric or rule guidance
-3. knowledge ingestion
+1. generate an experiment report
+2. generate an experiment report with temporary metric / rule guidance
+3. ingest reusable knowledge into the glossary / business knowledge layer
 
 ## Quick Start
 
@@ -43,13 +43,21 @@ Most users do not need to read the framework files first. If you want a little m
 
 ### 3. Use
 
-Treat this skill like a product entry point. Users should describe their scenario directly instead of trying to call internal sub-skills by name.
+Treat this skill like a product entry point. Users should describe the job directly instead of trying to call internal sub-skills by name.
 
-Use one of these patterns:
+You can say:
 
-- `Please use tt-ab-analysis-framework to ingest experiment knowledge.`
-- `Please use tt-ab-analysis-framework to generate an experiment report.`
-- `Please use tt-ab-analysis-framework to generate an experiment report with this temporary metric/rule guidance.`
+```text
+Please use tt-ab-analysis-framework to generate an experiment report.
+```
+
+```text
+Please use tt-ab-analysis-framework to generate an experiment report with this temporary metric/rule guidance.
+```
+
+```text
+Please use tt-ab-analysis-framework to ingest experiment knowledge.
+```
 
 ### 4. Scenario Mapping
 
@@ -57,57 +65,80 @@ Use one of these patterns:
 
 Use this for a full PRD + raw-data driven report.
 
-Typical user input:
+You can say:
 
-- `Please use tt-ab-analysis-framework to generate an experiment report.`
-- `Experiment name (optional): [example: DM Personalized Bubble]`
-- `PRD link: [URL]`
-- `Raw Data link: [URL]`
-- `Optional screenshots or tables: [URL or pasted content]`
+```text
+Please use tt-ab-analysis-framework to generate an experiment report.
+Experiment name (optional): [example: DM Personalized Bubble]
+PRD link: [URL]
+Raw Data link: [URL]
+Optional screenshots or tables: [URL or pasted content]
+```
 
-System behavior:
+What the system will do:
 
 - run the doc-first analysis workflow,
 - consult stored knowledge silently,
-- perform drill-down attribution and risk review when needed,
-- generate a structured experiment report with gains, risks, and evidence boundaries visible.
+- perform attribution, guardrail review, and evidence-boundary checks,
+- generate a structured report that answers the decision question first.
 
 #### Secondary Scenario: Temporary metric / rule guidance
 
 Use this for one-run-only overrides that should not be written into the reusable knowledge store.
 
-Typical user input:
+You can say:
 
-- `Please use tt-ab-analysis-framework to generate an experiment report with this temporary metric/rule guidance.`
-- `Experiment name (optional): [xxx]`
-- `PRD link: [URL]`
-- `Raw Data link: [URL]`
-- `Temporary metric guidance: [example: click_report increasing means worsening risk in this experiment]`
+```text
+Please use tt-ab-analysis-framework to generate an experiment report with this temporary metric/rule guidance.
+Experiment name (optional): [xxx]
+PRD link: [URL]
+Raw Data link: [URL]
+Temporary metric guidance: [example: click_report increasing means worsening risk in this experiment]
+```
 
-System behavior:
+What the system will do:
 
 - apply the temporary note for the current run only,
 - let it override stored knowledge for this run,
 - never let it override hard framework rules,
-- avoid writing it into the long-term knowledge base unless explicitly requested.
+- avoid writing it into long-term knowledge unless explicitly requested.
 
 #### Optional Scenario: Knowledge ingestion
 
 Use this for durable glossary, polarity, and business-note updates.
 
-Typical user input:
+You can say:
 
-- `Please use tt-ab-analysis-framework to ingest experiment knowledge.`
-- `Metric glossary / knowledge input: [Feishu URL or pasted text]`
-- `Optional polarity hint: [example: block/user decreasing is good]`
+```text
+Please use tt-ab-analysis-framework to ingest experiment knowledge.
+Metric glossary / knowledge input: [Feishu URL or pasted text]
+Optional polarity hint: [example: block/user decreasing is good]
+```
 
-System behavior:
+For a long knowledge-base document, you can also say:
+
+```text
+Please use tt-ab-analysis-framework to organize a glossary draft from this knowledge base.
+Knowledge source: [Feishu URL or pasted text]
+Requirements:
+1. Split the draft into metric groups / metrics / dimensions.
+2. Fill what can be confirmed.
+3. Leave uncertain fields blank.
+4. List the questions I still need to confirm.
+```
+
+What the system will do:
 
 - extract durable knowledge only,
 - keep the stored form compact,
 - update the reusable knowledge layer,
-- return a short confirmation by default instead of a long write-up.
-- do not treat old experiment tables, conclusions, or reports as reusable knowledge.
+- return a short confirmation by default instead of a long write-up,
+- never treat old experiment tables, conclusions, or reports as reusable knowledge,
+- and, for long knowledge-base docs, default to a two-pass workflow:
+  - first turn the raw source into a structured glossary draft,
+  - then present a clear `to confirm` list instead of making the user find gaps manually,
+  - then let the user review / correct missing or ambiguous fields,
+  - then consolidate the confirmed version into the reusable glossary.
 
 If more context is needed, read these framework files:
 
@@ -138,6 +169,8 @@ Use these knowledge files as the main reusable knowledge store:
 - Use drilldown and slice evidence to explain why the global result holds.
 - If the PRD contains product images, UI mocks, or annotated screenshots, read them as part of the PRD whenever the model/runtime has image-reading ability.
 - When reading PRD changes or arm differences, do not stop at one-line summaries; read down to concrete product deltas such as entry points, triggers, page flow, permissions, supported objects, interaction changes, and effect scope.
+- When knowledge ingestion is requested, organize raw knowledge into a structured draft first if the source is long, mixed, or incomplete.
+- For glossary drafts, do not make the user inspect the whole draft blindly; always surface a short `to confirm` list that says exactly what still needs review.
 
 ## Storage Boundaries
 
@@ -183,3 +216,10 @@ This means:
 - For multi-arm experiments, include a dedicated comparison section instead of leaving the comparison implicit across separate sections.
 - Do not write fine-grained product-mechanism differences across arms unless the source explicitly shows the relevant config or description differences.
 - If the PRD includes product screenshots, mocks, or visual diff tables that clarify arm differences, treat them as source evidence and read them before writing mechanism comparisons.
+- If a glossary or knowledge-base source is incomplete, fill only what can be confirmed and leave the rest blank for user review.
+- For glossary ingestion, the expected collaboration loop is:
+  - source knowledge in,
+  - structured draft out,
+  - explicit `to confirm` list,
+  - user confirmation,
+  - formal glossary update.

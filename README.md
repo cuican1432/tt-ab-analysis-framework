@@ -104,6 +104,87 @@ You do not need to remember the internal helper skills. In most cases, calling `
 
 ### 5. Usage Guide | 使用指南
 
+#### Scenario 1: Knowledge Ingestion | 场景一：纯知识入库（防瞎猜备用）
+
+适用场景：  
+Use this when:
+
+- 刚整理好新版指标字典，想提前存入知识库  
+  you have a new metric dictionary and want to store it for future runs
+- 想把某些指标的极性提前定好，比如 `block/user` 下降代表更好  
+  you want to fix metric polarity in advance, for example `block/user` decreasing is good
+- 想把业务术语、口径说明、召回提示沉淀下来  
+  you want to store business terms, metric-caliber notes, or recall hints
+
+你可以直接这样说 👇  
+You can say:
+
+```text
+Please use tt-ab-analysis-framework to ingest experiment knowledge.
+Metric glossary / knowledge input: [Feishu URL or pasted text]
+```
+
+系统会这样处理：  
+What the system will do:
+
+- 在后台做轻量知识萃取  
+  perform lightweight knowledge extraction in the background
+- 提取可复用的 `<metric name -> meaning / polarity / note>` 信息  
+  extract reusable `<metric name -> meaning / polarity / note>` mappings
+- 写入本地知识层，供后续实验报告自动优先调用  
+  write them into the local knowledge layer so future reports can reuse them automatically
+- 默认只回一个简短确认，而不是长篇输出  
+  return a short confirmation by default instead of a long write-up
+
+#### Glossary Update Loop | Glossary 迭代更新怎么做
+
+你不需要一次把 glossary 填全。更推荐的方式是：  
+You do not need to fill the whole glossary in one shot. A better pattern is:
+
+1. 先给一版知识库或初稿  
+   start from a knowledge base or a rough draft
+2. 让系统整理成结构化版本  
+   let the system organize it into a structured version
+3. 你再补充、纠正和确认  
+   then review, correct, and confirm
+
+如果你已经有一版 glossary 初稿，可以直接这样说 👇  
+If you already have a glossary draft, you can say:
+
+```text
+请基于 glossary 初稿继续修订。
+需要修改：
+1. 哪些指标组名称要改
+2. 哪些指标要补
+3. 哪些维度口径要补
+4. 哪些 polarity 要确认
+5. 哪些术语解释不对
+```
+
+如果你手头只有一小段知识，也可以直接这样补 👇  
+If you only have one small piece of knowledge, you can also update it like this:
+
+```text
+请更新 glossary。
+指标组：Key Project-Comment
+指标：FirstComment/U
+含义：每用户首评行为强度
+polarity：higher_is_better
+备注：常用于评论动机和抢首评相关实验
+```
+
+系统会这样处理：  
+What the system will do:
+
+- 把新内容整理回正确层级  
+  map the new content back into the right layer
+- 保持指标组、指标、维度、业务知识分开  
+  keep metric groups, metrics, dimensions, and business notes separated
+- 不确定的字段先留空，不乱猜  
+  leave uncertain fields blank instead of guessing
+- 最后把仍需你确认的问题单独列出来  
+  list the remaining items that still need your confirmation
+
 #### Scenario 2: Report Generation | 场景二：一键生成实验报告
 
 适用场景：  
@@ -170,38 +251,6 @@ What the system will do:
   do not write it back into the long-term knowledge base unless explicitly asked
 - 仍然遵守框架硬规则，不会因为临时说明而放宽数据纪律  
   still obey hard framework rules and never relax data discipline because of a temporary note
-
-#### Scenario 1: Knowledge Ingestion | 场景一：纯知识入库（防瞎猜备用）
-
-适用场景：  
-Use this when:
-
-- 刚整理好新版指标字典，想提前存入知识库  
-  you have a new metric dictionary and want to store it for future runs
-- 想把某些指标的极性提前定好，比如 `block/user` 下降代表更好  
-  you want to fix metric polarity in advance, for example `block/user` decreasing is good
-- 想把业务术语、口径说明、召回提示沉淀下来  
-  you want to store business terms, metric-caliber notes, or recall hints
-
-你可以直接这样说 👇  
-You can say:
-
-```text
-Please use tt-ab-analysis-framework to ingest experiment knowledge.
-Metric glossary / knowledge input: [Feishu URL or pasted text]
-```
-
-系统会这样处理：  
-What the system will do:
-
-- 在后台做轻量知识萃取  
-  perform lightweight knowledge extraction in the background
-- 提取可复用的 `<metric name -> meaning / polarity / note>` 信息  
-  extract reusable `<metric name -> meaning / polarity / note>` mappings
-- 写入本地知识层，供后续实验报告自动优先调用  
-  write them into the local knowledge layer so future reports can reuse them automatically
-- 默认只回一个简短确认，而不是长篇输出  
-  return a short confirmation by default instead of a long write-up
 
 ## Repository Structure | 仓库结构
 
