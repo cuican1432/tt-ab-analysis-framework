@@ -18,6 +18,10 @@ The simplest mental model is:
   `runbook.md` explains how execution is typically done
 - `tooling.md` 讲“工具和输入源怎么选”  
   `tooling.md` explains tooling and source-path choices
+- `knowledge/drafts/` 放“还在 review 中的知识草稿”  
+  `knowledge/drafts/` stores knowledge drafts that are still under review
+- `knowledge/business_kb.md` 更像“业务知识索引”  
+  `knowledge/business_kb.md` is better treated as an index-first business knowledge layer
 
 ## Read Order
 
@@ -44,6 +48,9 @@ The simplest mental model is:
 - `tooling.md`
   - tool preferences and browser guidance
   - when to use docs, exports, or browser reading
+- `knowledge/drafts/`
+  - review-stage glossary and business-knowledge drafts
+  - partial work that should not yet be treated as formal knowledge
 
 ## Editing Boundary
 

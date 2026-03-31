@@ -19,6 +19,25 @@ Use this default order for experiment analysis:
 6. Write Stage C report.
 7. Run Stage D evaluation when required.
 
+## Knowledge Ingestion Loop
+
+Use this default order for glossary / knowledge-base maintenance:
+
+1. Read the raw knowledge source first.
+   - Prefer a Lark knowledge base, glossary doc, table, or pasted text.
+2. Organize it into a structured draft.
+   - Split into metric groups, metrics, dimensions, and business notes when possible.
+   - Treat business knowledge as index-first: locate the relevant topic first, then pull only the needed content.
+3. Fill only what can be confirmed from the source.
+4. Leave uncertain fields blank.
+5. Print a `to confirm` list for the user.
+   - Do not make the user discover gaps manually.
+6. After user confirmation, partially ingest the confirmed parts.
+   - Stable entries can move into the formal glossary / business knowledge files.
+   - Unstable or incomplete entries should remain in `knowledge/drafts/`.
+7. Repeat the loop as needed.
+   - Knowledge ingestion is iterative, not all-or-nothing.
+
 ## Live Libra Branch
 
 Use live Libra extraction only when:

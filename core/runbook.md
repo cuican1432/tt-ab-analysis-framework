@@ -22,6 +22,36 @@ Practical reminder:
 - then make sure the metric recall set is complete,
 - and only then move into writing.
 
+## When Maintaining Glossary / Business Knowledge
+
+- Do not expect the source to arrive in perfect glossary format.
+- Start by turning raw knowledge into a structured draft.
+- Keep metric groups, metrics, dimensions, and business terms separated.
+- Treat business knowledge as an index, not a monolithic article.
+- Pull the topic you need instead of loading everything.
+- Fill only what can be confirmed from the source.
+- Leave uncertain fields blank.
+- Always print a short `to confirm` list for the reviewer.
+- Do not make the reviewer discover gaps by rereading the whole draft.
+
+Recommended collaboration loop:
+
+1. source knowledge in,
+2. structured draft out,
+3. explicit `to confirm` list,
+4. user review,
+5. partial ingest of stable entries,
+6. keep unfinished parts in `knowledge/drafts/`,
+7. continue in the next round when needed.
+
+Practical split:
+
+- put stable, reusable items into:
+  - `knowledge/metric_glossary.md`
+  - `knowledge/business_kb.md`
+- keep still-evolving or partially confirmed content in:
+  - `knowledge/drafts/`
+
 ## When the Source Looks Wrong
 
 - Check whether the issue is:

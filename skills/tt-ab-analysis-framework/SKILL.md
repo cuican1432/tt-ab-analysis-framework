@@ -170,6 +170,8 @@ Use these knowledge files as the main reusable knowledge store:
 - If the PRD contains product images, UI mocks, or annotated screenshots, read them as part of the PRD whenever the model/runtime has image-reading ability.
 - When reading PRD changes or arm differences, do not stop at one-line summaries; read down to concrete product deltas such as entry points, triggers, page flow, permissions, supported objects, interaction changes, and effect scope.
 - When knowledge ingestion is requested, organize raw knowledge into a structured draft first if the source is long, mixed, or incomplete.
+- Treat the business knowledge layer as index-first.
+- Do not read or summarize the entire business KB by default; locate the relevant topic and pull only what the current case needs.
 - For glossary drafts, do not make the user inspect the whole draft blindly; always surface a short `to confirm` list that says exactly what still needs review.
 
 ## Storage Boundaries

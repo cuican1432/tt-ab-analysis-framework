@@ -1,15 +1,15 @@
-# DM Glossary Seed Draft | 私信知识库首版整理稿
+# DM Glossary v2 (Round 1 Confirmed) | 私信 Glossary v2（第一轮确认版）
 
 Source | 来源：
 
 - [【AI+AB】私信知识库](https://bytedance.larkoffice.com/wiki/XVoNwDn7piwyKukCRWNcXMD1nId)
+- Round-1 review decisions from the glossary draft
 
 Purpose | 用途：
 
-- 这是基于现有知识库整理出的**第一版结构化 glossary 初稿**。  
-- 能确认的字段先填。  
-- 不能确认的字段先留空。  
-- 最后附一段 `To Confirm`，方便你下一轮修订。
+- 这是在 `dm_glossary_seed_from_ai_ab_kb.md` 基础上，吸收第一轮确认结果后的整理版。  
+- 它比 seed draft 更稳定，但仍然属于 **draft**，还没有直接并入正式 glossary。  
+- 这份文件的目标是把已经确认的内容先固化下来，方便下一轮继续补充。
 
 ---
 
@@ -34,11 +34,11 @@ typical_usage: often used as a business-core metric group in DM experiments
 priority_hint: P0
 
 common_dimensions:
-  - by entrance
-  - by msg type
-  - by motivation
+  - By Entrance
+  - By Msg Type
+  - By Motivation
 
-notes: Group name visible in linked DM-related materials and repeatedly referenced as a core analysis unit.
+notes: Confirmed as a retained long-term group name in round-1 review.
 ```
 
 ### Entry 2
@@ -61,7 +61,7 @@ priority_hint: P1
 
 common_dimensions:
 
-notes: Mentioned by the knowledge-base structure, but detailed metric content was not fully expanded in the visible section.
+notes: Confirmed as a retained long-term group name in round-1 review.
 ```
 
 ### Entry 3
@@ -84,18 +84,21 @@ priority_hint: P1
 
 common_dimensions:
 
-notes: Mentioned in the business-intro section as part of the DM product surface, but metric details still need confirmation.
+notes: Confirmed as a retained long-term group name in round-1 review.
 ```
 
 ---
 
 ## 2. Metric Index | 指标索引
 
-这轮 source 可见部分主要是业务术语和结构说明，**单个指标定义并没有完整展开**。  
-The visible part of the source focused more on business terms and structure, so single-metric definitions were not fully expanded.
+这一轮仍然保留 placeholder。  
+This round still keeps the metric layer as placeholders.
 
-先放一个模板化 placeholder，等你们下一轮补。  
-Below is a placeholder entry shape for the next round.
+原因：  
+Reason:
+
+- `二、私信业务核心指标组` 与 `四、私信语音指标组` 下面的具体指标条目，本轮确认是先不强补。  
+- 后续拿到更完整的指标定义后，再从 placeholder 升级成正式条目。
 
 ### Placeholder Example
 
@@ -153,8 +156,8 @@ dimension_name: By Msg Type
 dimension_aliases:
   - 拆分消息类型
 
-meaning_zh: 行为维度下钻，表示私信消息类型，如 Text、Emoji 等。
-meaning_en: A behavioral drilldown dimension that shows DM message types such as Text and Emoji.
+meaning_zh: 行为维度下钻，表示私信消息类型，如 Text、Emoji、Voice、Sticker 等。
+meaning_en: A behavioral drilldown dimension that shows DM message types such as Text, Emoji, Voice, and Sticker.
 
 applies_to_groups:
   - DM Core
@@ -204,7 +207,7 @@ term: MUF
 term_zh: 双关
 meaning_zh: 指用户间互为关注的关系（Mutual Follow），是私信核心互动的基础关系。
 meaning_en: Mutual Follow; a bilateral follow relationship that serves as a core relational foundation for DM interaction.
-notes:
+notes: `双关` is confirmed as the preferred Chinese term in round-1 review.
 ```
 
 ### Entry 2
@@ -227,58 +230,63 @@ meaning_en: TikTok's anti-harassment mechanism for non-mutual users; the receive
 notes:
 ```
 
+### Entry 4
+
+```yaml
+term: Big-moji
+term_zh:
+meaning_zh:
+meaning_en:
+notes: Keep this separate from `UGC sticker` and `Sticker panel`; do not merge them into a single `Sticker` term.
+```
+
+### Entry 5
+
+```yaml
+term: UGC sticker
+term_zh:
+meaning_zh:
+meaning_en:
+notes: Keep this separate from `Big-moji` and `Sticker panel`.
+```
+
+### Entry 6
+
+```yaml
+term: Sticker panel
+term_zh:
+meaning_zh:
+meaning_en:
+notes: Keep this separate from `Big-moji` and `UGC sticker`.
+```
+
 ---
 
-## 5. To Confirm | 待确认
-
-你不需要自己通篇找问题，优先看下面这份确认清单就可以。  
-You do not need to scan the whole draft for gaps. Start from this review list.
-
-### Confirmed In This Round | 本轮已确认
-
-1. 指标组正式名称保留：
-   - `DM Core`
-   - `DM Voice Message`
-   - `DM Group Chat`
-2. `MUF` 中文正式写法保留为：`双关`
-3. `二、私信业务核心指标组` 与 `四、私信语音指标组` 下面的具体指标，本轮先保持 `placeholder`
-4. 维度英文名保留：
-   - `By Entrance`
-   - `By Msg Type`
-   - `By Motivation`
-5. `Sticker` 相关术语后续需要分开保留，不合并成单一 `Sticker`
-
-### Must Confirm | 必须确认
-
-1. 暂无。当前必须确认项已收完。  
-   None for now. The must-confirm items for this round are closed.
+## 5. Remaining To Confirm | 仍待确认
 
 ### Should Confirm | 建议确认
 
-1. `Sticker` 相关术语虽然确认要区分保留，但下一轮仍建议补充它们各自的正式定义和边界：
-   - `Big-moji`
-   - `UGC sticker`
-   - `Sticker panel`
+1. `Big-moji`、`UGC sticker`、`Sticker panel` 的正式中文名、英文定义和边界。  
+2. 如果你们后续已有正式的指标优先级体系，可以继续补 `priority_hint`。  
 
 ### Optional Follow-up | 可选补充
 
-1. 如果你们已经有更正式的指标优先级定义，可以补 `priority_hint`。  
-2. 如果后面能拿到完整指标定义页，再把 `Metric Index` 里的 placeholder 补成正式条目。  
+1. 后续拿到完整指标定义页后，把 `Metric Index` 的 placeholder 补成正式条目。  
+2. 如果某些维度有固定枚举值定义，可以继续拆出 `dimension value index`。  
 
 ---
 
-## Suggested Next Round | 建议下一轮怎么给我
+## Suggested Next Round | 建议下一轮怎么继续
 
 你下一轮可以直接这样给：
 
 ```text
-请基于这版 glossary 初稿继续修订。
-需要修改：
-1. 哪些指标组名称要改
-2. 哪些指标要补
-3. 哪些维度口径要补
-4. 哪些 polarity 要确认
-5. 哪些术语解释不对
+请基于 dm_glossary_v2_round1 继续修订。
+需要补充：
+1. Big-moji / UGC sticker / Sticker panel 的术语定义
+2. 需要新增的具体指标
+3. 需要补充的 polarity
+4. 需要补充的维度枚举值
 ```
 
-这样我就可以把这版初稿收成更正式的 glossary v2。
+这样就可以继续往 glossary v3 收。

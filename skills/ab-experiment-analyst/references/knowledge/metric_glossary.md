@@ -260,6 +260,202 @@ interpretation_notes: Often used as a direct expression-intensity signal in DM e
 每个条目对应一个维度。  
 Each entry corresponds to one dimension.
 
+### Suggested Fields | 建议字段
+
+- `dimension_name`
+- `dimension_aliases`
+- `meaning_zh`
+- `meaning_en`
+- `applies_to_groups`
+- `applies_to_metrics`
+- `value_examples`
+- `warnings`
+
+### Template | 模板
+
+```yaml
+dimension_name:
+dimension_aliases:
+  - 
+
+meaning_zh:
+meaning_en:
+
+applies_to_groups:
+  - 
+
+applies_to_metrics:
+  - 
+
+value_examples:
+  - 
+
+warnings:
+```
+
+### Example | 示例
+
+```yaml
+dimension_name: os
+dimension_aliases:
+  - platform
+
+meaning_zh: 按操作系统拆分的人群维度。
+meaning_en: A dimension that splits users by operating system.
+
+applies_to_groups:
+  - DM Core
+
+applies_to_metrics:
+  - Send Message PV/User
+
+value_examples:
+  - android
+  - ios
+
+warnings: Do not treat OS differences as product-mechanism proof by itself; use it as supporting drilldown evidence.
+```
+
+---
+
+## Partially Ingested Stable Entries | 已分批入库的稳定条目
+
+These entries are already stable enough to be reused, even though the full DM glossary is still evolving.  
+下面这些条目已经足够稳定，可以先正式入库复用；完整的 DM glossary 仍可继续在 `drafts/` 中迭代。
+
+### Metric Groups | 指标组
+
+```yaml
+group_name: DM Core
+group_aliases:
+  - 私信核心指标组
+
+description_zh: 私信核心使用行为指标组，通常用于观察进入会话、停留、发送等主链路行为。
+description_en: A core DM usage metric group that usually covers entering chat, staying, and sending behaviors.
+
+usage_scope: DM / direct message experiments
+is_company_core:
+is_business_core: true
+is_sub_business_core: true
+
+typical_usage: often used as a business-core metric group in DM experiments
+priority_hint: P0
+
+common_dimensions:
+  - By Entrance
+  - By Msg Type
+  - By Motivation
+
+notes: Confirmed in round-1 glossary review.
+```
+
+```yaml
+group_name: DM Voice Message
+group_aliases:
+  - 私信语音指标组
+
+description_zh: 私信语音消息相关指标组，通常用于观察语音消息录制、发送和使用行为。
+description_en: A DM voice-message metric group used to observe recording, sending, and usage behavior for voice messages.
+
+usage_scope: DM / voice-message related experiments
+is_company_core:
+is_business_core:
+is_sub_business_core: true
+
+typical_usage: often used as a feature-specific supporting group
+priority_hint: P1
+
+common_dimensions:
+
+notes: Confirmed in round-1 glossary review.
+```
+
+```yaml
+group_name: DM Group Chat
+group_aliases:
+  - 群聊指标组
+
+description_zh: 私信群聊相关指标组，用于观察群聊进入、互动和发送行为。
+description_en: A DM group-chat metric group used to observe group-chat entry, interaction, and sending behavior.
+
+usage_scope: DM / group chat experiments
+is_company_core:
+is_business_core:
+is_sub_business_core: true
+
+typical_usage: often used as a sub-business supporting group
+priority_hint: P1
+
+common_dimensions:
+
+notes: Confirmed in round-1 glossary review.
+```
+
+### Dimensions | 维度
+
+```yaml
+dimension_name: By Entrance
+dimension_aliases:
+  - 拆分渠道
+
+meaning_zh: 行为维度下钻，表示消息发送或私信行为来自哪个入口渠道，例如 FYP、Inbox 等。
+meaning_en: A behavioral drilldown dimension that shows which entrance channel a DM action comes from, such as FYP or Inbox.
+
+applies_to_groups:
+  - DM Core
+
+applies_to_metrics:
+
+value_examples:
+  - FYP
+  - Inbox
+
+warnings: Entrance values should be treated as source-channel splits, not as user-quality tiers.
+```
+
+```yaml
+dimension_name: By Msg Type
+dimension_aliases:
+  - 拆分消息类型
+
+meaning_zh: 行为维度下钻，表示私信消息类型，如 Text、Emoji、Voice、Sticker 等。
+meaning_en: A behavioral drilldown dimension that shows DM message types such as Text, Emoji, Voice, and Sticker.
+
+applies_to_groups:
+  - DM Core
+  - DM Voice Message
+
+applies_to_metrics:
+
+value_examples:
+  - Text
+  - Emoji
+  - Voice
+  - Sticker
+
+warnings: Message-type splits are useful for heterogeneity and mechanism explanation, but should not replace global evidence.
+```
+
+```yaml
+dimension_name: By Motivation
+dimension_aliases:
+  - 拆分聊天动机
+
+meaning_zh: 行为维度下钻，表示私信动机类型，例如分享、主动聊天等。
+meaning_en: A behavioral drilldown dimension that shows DM motivation types such as sharing or proactive chatting.
+
+applies_to_groups:
+  - DM Core
+
+applies_to_metrics:
+
+value_examples:
+  - 分享
+  - 主动聊天
+
+warnings: Motivation definitions are business-defined and should not be overgeneralized beyond the source taxonomy.
+```
+
 维度是“怎么切”的规则，不是指标本身。  
 A dimension tells how data is sliced; it is not a metric itself.
 
