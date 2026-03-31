@@ -69,14 +69,18 @@ If the problem is only in step 4, fix B/C without pretending the data changed.
 - Then show the strongest evidence.
 - Then surface the most decision-relevant risks.
 - Then state the remaining boundary or evidence gap.
+- If the experiment has multiple treatment arms, do not stop at separate arm summaries.
+- In multi-arm cases, add a dedicated comparison section that answers: who is better overall, who is weaker overall, and which differences actually matter for the decision.
+- Only compare fine-grained product-mechanism differences across arms when the source explicitly shows those config or description differences.
 
 Practical writing order:
 
 1. answer the rollout / decision question,
 2. show the primary evidence,
 3. show the major guardrail or downside,
-4. explain the most credible attribution path,
-5. close with the remaining uncertainty.
+4. if multi-arm, compare the arms directly and state which one wins and why,
+5. explain the most credible attribution path,
+6. close with the remaining uncertainty.
 
 What to avoid:
 

@@ -133,6 +133,10 @@ Treat `DAU` as a scale / sample-size signal, not as a direct treatment-effect co
 - Use business themes, not raw page order, as the main narrative structure.
 - Keep risk and benefit at the same level of visibility.
 - Name representative metrics and values when making a business-theme claim.
+- For multi-arm experiments, do not describe each arm in isolation only.
+- For multi-arm experiments, explicitly state which arm is better, which arm is weaker, and what the decision implication is.
+- If there are multiple treatment arms, include a dedicated comparison section so the reader can see the strict arm-to-arm differences, not just separate summaries.
+- Only make detailed product-mechanism comparisons when the source explicitly exposes the relevant configuration or description differences for those arms.
 - When evidence is insufficient, explicitly separate:
   - what is confirmed,
   - what is not confirmed,
