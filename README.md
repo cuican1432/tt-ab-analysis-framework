@@ -376,6 +376,31 @@ By default, treat these three attribution routes as equally valid:
 它们之间不是谁天然更高级，而是谁更能把“现象 -> 解释”说清楚。  
 None of them is inherently superior; the useful one is the one that best connects the observation to the explanation.
 
+真正做归因排查时，通常会沿着这些方向去看：  
+In practice, attribution investigations usually move along these directions:
+
+- 链路归因  
+  - 看漏斗哪一步断了、哪一步爆了，以及上游变化有没有真的带动下游结果。  
+    Check which funnel step broke or spiked, and whether upstream movement actually carried into downstream results.
+- 用户归因  
+  - 看新老用户、高低频用户、平台、机型、人群结构有没有变化，也要留心辛普森悖论。  
+    Check whether composition changed across new vs existing users, heavy vs light users, platform, device, and segment mix, including Simpson's paradox risk.
+- 指标结构归因  
+  - 看公式拆解后，究竟是渗透、频次、客单价，还是存量 / 增量在驱动结果。  
+    Decompose the metric formula to see whether penetration, frequency, basket size, or stock vs incremental effects are driving the movement.
+- 空间归因  
+  - 看有没有内部蚕食、模块竞争、资源挤压，避免“一个地方涨、别的地方掉”。  
+    Check for cannibalization, module competition, or resource crowding so that one gain is not hiding losses elsewhere.
+- 时间归因  
+  - 看是短期新奇效应，还是更稳定的持续收益；也要考虑长周期业务的延迟回填。  
+    Distinguish short-lived novelty effects from stable gains, and account for delayed backfill in long-conversion businesses.
+- 数据质量归因  
+  - 看 SRM、离群值、AA 基线、埋点或分流问题，先排干扰再解释业务。  
+    Check SRM, outliers, AA baselines, instrumentation, and assignment quality before claiming a business explanation.
+- 外部 / 产品归因  
+  - 看版本更新、Bug、运营活动、按钮打架、误触等外部或交互因素。  
+    Check app versions, bugs, ops events, button conflicts, accidental taps, and other external or interaction-driven factors.
+
 做归因时，建议明确标注：  
 When making an attribution, label it clearly when useful:
 
@@ -396,6 +421,12 @@ At the same time, keep two boundaries:
   Do not invent psychology without objective support.
 - 严禁无证据支撑的主观动机揣测。  
   Do not speculate about user motivation without evidence.
+
+还有一个很实用的原则：  
+There is also one very practical rule:
+
+- 不是每次都要把所有方向都排完，而是优先排那些最可能真正解释当前异动的方向。  
+  You do not need to exhaust every direction every time; prioritize the ones most likely to explain the current movement.
 
 一句话记法：  
 A simple memory aid is:

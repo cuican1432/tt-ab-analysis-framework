@@ -85,6 +85,25 @@ Use whichever route closes the explanation loop best.
 
 Do not invent psychology or user motivation without hard support.
 
+When investigating attribution, check the most relevant of these directions:
+
+- path attribution
+  - funnel breaks, step-level explosions, and downstream linkage
+- user attribution
+  - segment composition, new vs existing users, platform / device / frequency layers
+- formula attribution
+  - factor decomposition, stock vs incremental effects
+- space attribution
+  - internal cannibalization, module competition, spillover effects
+- time attribution
+  - novelty effects, delayed effects, and trend decay
+- data-quality attribution
+  - SRM, outliers, pre-period imbalance, and instrumentation issues
+- external / product attribution
+  - app version changes, bugs, campaigns, ops interference, button conflicts, or accidental taps
+
+Do not try to force every attribution through all directions. Use the directions that can actually explain the movement.
+
 ## Metric-Caliber Discipline
 
 Before interpreting an anomaly, align:
