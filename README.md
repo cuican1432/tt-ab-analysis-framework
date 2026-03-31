@@ -53,35 +53,115 @@ Start with these three files:
 2. `core/index.md`
 3. `skills/tt-ab-analysis-framework/SKILL.md`
 
-### 4. Use the Main Skill | 怎么调用主 Skill
+### 4. Product Guide | 产品使用指南
 
-主 skill 支持三类典型任务：  
-The main skill supports three common tasks:
+这个主 skill 更适合被当成一个“实验分析产品入口”来用，而不是一个抽象工具名。  
+Think of this main skill as a product-style entry point for experiment analysis rather than an abstract tool name.
 
-- knowledge ingestion
-- report generation
-- report generation with temporary rule guidance
+它主要支持三类任务：  
+It mainly supports three task types:
 
-示例 prompts：  
-Example prompts:
+- 知识入库 | knowledge ingestion
+- 实验报告生成 | experiment report generation
+- 带临时规则的实验报告生成 | experiment report generation with temporary guidance
+
+你不需要记内部子 skill。大多数情况下，直接调用 `tt-ab-analysis-framework` 就够了。  
+You do not need to remember the internal helper skills. In most cases, calling `tt-ab-analysis-framework` directly is enough.
+
+### 5. Usage Guide | 使用指南
+
+#### Scenario 1: Knowledge Ingestion | 场景一：纯知识入库（防瞎猜备用）
+
+适用场景：  
+Use this when:
+
+- 刚整理好新版指标字典，想提前存入知识库  
+  you have a new metric dictionary and want to store it for future runs
+- 想把某些指标的极性提前定好，比如 `block/user` 下降代表更好  
+  you want to fix metric polarity in advance, for example `block/user` decreasing is good
+- 想把业务术语、口径说明、召回提示沉淀下来  
+  you want to store business terms, metric-caliber notes, or recall hints
+
+可以直接这样说：  
+You can say:
 
 - `Please use tt-ab-analysis-framework to ingest experiment knowledge.`
+- `Metric glossary / knowledge input: [Feishu URL or pasted text]`
+
+系统动作：  
+What the system will do:
+
+- 在后台做轻量知识萃取  
+  perform lightweight knowledge extraction in the background
+- 提取可复用的 `<metric name -> meaning / polarity / note>` 信息  
+  extract reusable `<metric name -> meaning / polarity / note>` mappings
+- 写入本地知识层，供后续实验报告自动优先调用  
+  write them into the local knowledge layer so future reports can reuse them automatically
+- 默认只回一个简短确认，而不是长篇输出  
+  return a short confirmation by default instead of a long write-up
+
+#### Scenario 2: Report Generation | 场景二：一键生成实验报告
+
+适用场景：  
+Use this when:
+
+- 实验观测期结束，数据已经就绪  
+  the experiment observation window has ended and data is ready
+- 需要基于 PRD + raw data 文档快速生成标准化实验报告  
+  you want a standardized report from PRD + raw data documents
+
+可以直接这样说：  
+You can say:
+
 - `Please use tt-ab-analysis-framework to generate an experiment report.`
+- `Experiment name: [example: DM Personalized Bubble]`
+- `PRD link: [URL]`
+- `Raw Data link: [URL]`
+
+系统动作：  
+What the system will do:
+
+- 串行执行 doc-first 分析流程  
+  run the doc-first analysis workflow
+- 静默优先读取已入库的指标字典和业务知识  
+  silently prioritize stored metric glossary and business knowledge
+- 在需要时做多维归因、风险梳理和证据边界标注  
+  perform drill-down attribution, risk review, and evidence-boundary labeling when needed
+- 输出结构化实验报告，而不是零散分析片段  
+  output a structured experiment report rather than scattered analysis fragments
+
+#### Scenario 3: Report Generation with Temporary Guidance | 场景三：带临时指标说明的实验报告
+
+适用场景：  
+Use this when:
+
+- 本期实验有临时监控指标  
+  this experiment includes a temporary monitoring metric
+- 本次需要一个临时极性或解释规则  
+  this run needs a temporary polarity or interpretation rule
+- 你不希望把它永久写入知识库  
+  you do not want to save it permanently into the knowledge base
+
+可以直接这样说：  
+You can say:
+
 - `Please use tt-ab-analysis-framework to generate an experiment report with this temporary metric/rule guidance.`
+- `Experiment name: [xxx]`
+- `PRD link: [URL]`
+- `Raw Data link: [URL]`
+- `Temporary metric guidance: [example: click_report increasing means worsening risk in this experiment]`
 
-### 5. Typical Scenarios | 典型场景
+系统动作：  
+What the system will do:
 
-- Knowledge ingestion  
-  用于沉淀可复用的指标含义、极性规则、业务知识。  
-  Store reusable metric meanings, polarity rules, and business notes.
-
-- Report generation  
-  用于基于 PRD + raw data 文档 + 辅助材料生成完整实验报告。  
-  Generate a full experiment report from PRD + raw data docs + supporting materials.
-
-- Report generation with temporary guidance  
-  用于本次实验临时加一条解释或规则，但不写回知识库。  
-  Apply a one-run-only metric explanation or rule without updating stored knowledge.
+- 只在当前运行中应用这条临时说明  
+  apply the temporary instruction for the current run only
+- 在归因和极性判断中优先使用该临时说明  
+  prioritize it during attribution and polarity judgment
+- 不自动写回长期知识库  
+  do not write it back into the long-term knowledge base unless explicitly asked
+- 仍然遵守框架硬规则，不会因为临时说明而放宽数据纪律  
+  still obey hard framework rules and never relax data discipline because of a temporary note
 
 ## Repository Structure | 仓库结构
 
@@ -153,8 +233,8 @@ Put updateable knowledge here:
 
 - 优先读 PRD、raw data 文档、截图、表格。  
   Prefer PRD, raw-data docs, screenshots, and tables first.
-- 只有明确需要时才做 live Libra 抽取。  
-  Use live Libra extraction only when it is explicitly required.
+- 只有明确提供了 Libra 链接、明确要求读取 Libra 页面，或现有文档不足以支撑分析时，才做 live Libra 抽取。  
+  Use live Libra extraction only when a Libra link/page is explicitly provided or required, or when the available docs are not sufficient for the analysis.
 - 缺失数据就保留缺失。  
   Keep missing data missing.
 - Global 结果是主要决策证据。  

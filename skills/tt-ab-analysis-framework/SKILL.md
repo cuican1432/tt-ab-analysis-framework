@@ -44,7 +44,9 @@ Read these files first:
 
 ### 3. Use
 
-Then use one of these prompts:
+Treat this skill like a product entry point. Users should describe their scenario directly instead of trying to call internal sub-skills by name.
+
+Use one of these patterns:
 
 - `Please use tt-ab-analysis-framework to ingest experiment knowledge.`
 - `Please use tt-ab-analysis-framework to generate an experiment report.`
@@ -52,12 +54,58 @@ Then use one of these prompts:
 
 ### 4. Scenario Mapping
 
-- Knowledge ingestion
-  - for durable glossary, polarity, and business-note updates
-- Experiment report generation
-  - for full PRD + raw-data driven reporting
-- Temporary metric / rule guidance
-  - for one-run-only overrides that should not be written into the reusable knowledge store
+#### Scenario 1: Knowledge ingestion
+
+Use this for durable glossary, polarity, and business-note updates.
+
+Typical user input:
+
+- metric glossary text
+- Feishu knowledge doc link
+- business term notes
+- polarity guidance such as `block/user decreasing is good`
+
+System behavior:
+
+- extract durable knowledge only,
+- keep the stored form compact,
+- update the reusable knowledge layer,
+- return a short confirmation by default instead of a long write-up.
+
+#### Scenario 2: Experiment report generation
+
+Use this for a full PRD + raw-data driven report.
+
+Typical user input:
+
+- experiment name
+- PRD link
+- raw data link
+- optional screenshots or tables
+
+System behavior:
+
+- run the doc-first analysis workflow,
+- consult stored knowledge silently,
+- perform drill-down attribution and risk review when needed,
+- generate a structured experiment report with gains, risks, and evidence boundaries visible.
+
+#### Scenario 3: Temporary metric / rule guidance
+
+Use this for one-run-only overrides that should not be written into the reusable knowledge store.
+
+Typical user input:
+
+- temporary metric polarity
+- one-off interpretation note
+- experiment-specific rule guidance
+
+System behavior:
+
+- apply the temporary note for the current run only,
+- let it override stored knowledge for this run,
+- never let it override hard framework rules,
+- avoid writing it into the long-term knowledge base unless explicitly requested.
 
 Read these framework files first:
 
@@ -77,7 +125,7 @@ Use these knowledge files as the main reusable knowledge store:
 
 - Prefer doc-first analysis.
 - Read PRD, raw-data docs, screenshots, and tables before considering live browser extraction.
-- Use live Libra extraction only when the task explicitly requires it or the docs are insufficient.
+- Use live Libra extraction only when a Libra link/page is explicitly provided or required, or when the available docs are insufficient.
 - Keep missing data missing.
 - Keep global evidence as the main decision evidence.
 - Use drilldown and slice evidence to explain why the global result holds.
