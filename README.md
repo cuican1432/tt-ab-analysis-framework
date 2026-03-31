@@ -33,6 +33,13 @@ The fastest path is:
 如果你的目标只是尽快开始用，这条路径最推荐。  
 If your goal is simply to get started quickly, this is the recommended path.
 
+教学截图如下：  
+Step-by-step screenshots:
+
+![Mira step 1: open the Skills entry](docs/images/mira-step-1-open-skills.jpg)
+
+![Mira step 2: open Manage Skills and continue to upload](docs/images/mira-step-2-manage-skills.jpg)
+
 ### 2. Local Install Path | 本地安装路径
 
 如果你是在本地 `Codex` 或 `Trae` 环境里开发、调试或改 skill，本地路径才需要先 clone 仓库。  
