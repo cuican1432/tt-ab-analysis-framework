@@ -34,6 +34,8 @@ Use these knowledge files as needed:
 
 1. Read the experiment inputs first.
    - Prefer PRD, raw-data document, and any user-provided tables or screenshots.
+   - If the source is a Lark doc, prefer the built-in Lark reading path first, for example `mcp__proxy___mira_py__read_lark_content`.
+   - If the Lark tool cannot read the needed body content, fall back to browser reading.
    - If live report access is explicitly required, keep that as a separate extraction branch rather than the default path.
 2. Consult the glossary.
 3. Read the PRD.

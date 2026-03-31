@@ -3,6 +3,7 @@
 ## Default Tool Preference
 
 - Prefer local files and structured docs first.
+- If a Lark doc link is provided, prefer the built-in Lark reading tool first, for example `mcp__proxy___mira_py__read_lark_content`.
 - If browser work is needed, prefer:
   - `openclaw`
   - `browser playwright mcp`
@@ -18,6 +19,7 @@
 
 When live Libra extraction is required:
 
+- default to Playwright MCP browser tools such as `browser_navigate`, `browser_snapshot`, and `browser_click`,
 - reuse the same tab when possible,
 - avoid repeated reopen / refocus churn,
 - keep provenance when available.

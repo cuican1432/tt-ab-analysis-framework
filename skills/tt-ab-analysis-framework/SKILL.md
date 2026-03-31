@@ -127,9 +127,12 @@ Use these knowledge files as the main reusable knowledge store:
 
 - Prefer doc-first analysis.
 - Read PRD, raw-data docs, screenshots, and tables before considering live browser extraction.
+- When a Lark doc is provided, prefer the built-in Lark reading path first, for example `mcp__proxy___mira_py__read_lark_content`.
 - Treat live Libra extraction through direct browser reading of a Libra link/page as a beta path; it is useful but not fully stable.
 - Prefer Libra `conclusion report -> switch template -> export document` as the normal path when a Libra source is involved.
 - Use live Libra extraction only when a Libra link/page is explicitly provided or required, or when the available docs are insufficient.
+- If the Lark tool is unavailable or cannot read the needed body content, fall back to browser reading.
+- When browser reading is needed, default to the Playwright MCP browser path and use tools such as `browser_navigate`, `browser_snapshot`, and `browser_click` to read and operate the page.
 - Keep missing data missing.
 - Keep global evidence as the main decision evidence.
 - Use drilldown and slice evidence to explain why the global result holds.
