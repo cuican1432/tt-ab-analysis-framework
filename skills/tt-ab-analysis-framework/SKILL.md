@@ -15,7 +15,15 @@ Think of this skill as the single front door for three common jobs:
 
 ## Quick Start
 
-### 1. Install
+### 1. Mira First
+
+Recommended fast path:
+
+- use the Mira package first when the environment supports zip upload
+- upload `tt-ab-analysis-framework-mira.zip`
+- treat local repo clone as the development / maintainer path, not the default end-user path
+
+### 2. Local Development Install
 
 Clone the framework locally:
 
@@ -33,7 +41,7 @@ mkdir -p ~/.codex/skills/tt-ab-analysis-framework
 cp -R skills/tt-ab-analysis-framework/. ~/.codex/skills/tt-ab-analysis-framework/
 ```
 
-### 2. Optional Reading
+### 3. Optional Reading
 
 Most users do not need to read the framework files first. If you want a little more context, skim these:
 
@@ -41,7 +49,7 @@ Most users do not need to read the framework files first. If you want a little m
 2. `./references/core/workflow.md`
 3. `./references/core/rules.md`
 
-### 3. Use
+### 4. Use
 
 Treat this skill like a product entry point. Users should describe the job directly instead of trying to call internal sub-skills by name.
 
@@ -134,11 +142,12 @@ What the system will do:
 - update the reusable knowledge layer,
 - return a short confirmation by default instead of a long write-up,
 - never treat old experiment tables, conclusions, or reports as reusable knowledge,
-- and, for long knowledge-base docs, default to a two-pass workflow:
-  - first turn the raw source into a structured glossary draft,
-  - then present a clear `to confirm` list instead of making the user find gaps manually,
-  - then let the user review / correct missing or ambiguous fields,
-  - then partially ingest the confirmed entries into the formal glossary / business knowledge files while keeping unfinished parts in drafts.
+- and, for long knowledge-base docs, treat ingestion as one continuous flow:
+  - turn the raw source into a structured glossary draft,
+  - present a clear `to confirm` list instead of making the user find gaps manually,
+  - let the user review / correct missing or ambiguous fields,
+  - partially ingest confirmed entries into the formal glossary / business knowledge files,
+  - keep unfinished parts in drafts.
 
 If more context is needed, read these framework files:
 
