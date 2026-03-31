@@ -25,6 +25,14 @@ Use this default priority:
 - Do not mix global evidence and slice evidence at the same level without labeling the distinction.
 - If platform-level guardrails are missing, keep the final recommendation correspondingly conservative.
 
+For significance reading:
+
+- treat global metrics with the standard `p < 0.05` threshold unless the source specifies otherwise
+- treat key slice / segment signals more conservatively, defaulting to `p < 0.03`
+- even when a slice passes `p < 0.03`, do not elevate it alone unless direction, adjacent metrics, and business logic also support it
+- if a narrow slice is significant but the global result and nearby slices do not support it, treat it as monitoring or a hypothesis to verify
+- when checking heterogeneity, it is valid to note that some local gains may not fully show up at the overall level; if structure information is incomplete, keep this as a cautious heterogeneity note or a hypothesis to verify
+
 ## Metric Tiering
 
 Use three default tiers:
@@ -98,7 +106,8 @@ When investigating attribution, check the most relevant of these directions:
 - time attribution
   - novelty effects, delayed effects, and trend decay
 - data-quality attribution
-  - SRM, outliers, pre-period imbalance, and instrumentation issues
+  - when available, check SRM, outliers, pre-period imbalance, and instrumentation issues
+  - if the source does not expose assignment counts, split quality, or baseline checks, do not pretend this validity check was completed
 - external / product attribution
   - app version changes, bugs, campaigns, ops interference, button conflicts, or accidental taps
 

@@ -47,6 +47,25 @@ cp -R skills/ab-metric-glossary/. ~/.codex/skills/ab-metric-glossary/
 这两个 helper skill 现在也都是自包含结构，复制目录时会一并带上它们依赖的 `references/`。  
 These two helper skills are also self-contained now, so copying the directory also carries their required `references/`.
 
+### 2.5 Smoke Test Case | 烟测案例
+
+如果你想快速验证这套框架是不是能真正跑起来，可以先用这个公开写在仓库里的测试案例：  
+If you want to quickly verify that the framework really works, start with this repo-documented smoke test case:
+
+- `Personalized Bubble / 个性化气泡`
+  - Raw Data: [Lark Raw Data Doc](https://bytedance.larkoffice.com/docx/L2kwdjvt5oLCwsxbB7Wc6uMRnud)
+  - PRD: [Lark PRD](https://bytedance.larkoffice.com/wiki/BT70wFcLAi5eh3k2ihJc4LCynWe)
+
+最简单的验证方式是：  
+The simplest validation flow is:
+
+1. 安装主 skill  
+   Install the main skill
+2. 把上面的 `PRD` 和 `Raw Data` 链接直接喂给 `tt-ab-analysis-framework`  
+   Pass the `PRD` and `Raw Data` links above directly into `tt-ab-analysis-framework`
+3. 看它能否走通 doc-first 分析路径，并产出结构化实验报告  
+   Check whether it can follow the doc-first analysis path and produce a structured report
+
 ### 3. Start Using It | 直接开始用
 
 对大多数使用者来说，到这里就可以直接开始用了，不需要先读一堆框架文档。  
@@ -395,8 +414,10 @@ In practice, attribution investigations usually move along these directions:
   - 看是短期新奇效应，还是更稳定的持续收益；也要考虑长周期业务的延迟回填。  
     Distinguish short-lived novelty effects from stable gains, and account for delayed backfill in long-conversion businesses.
 - 数据质量归因  
-  - 看 SRM、离群值、AA 基线、埋点或分流问题，先排干扰再解释业务。  
-    Check SRM, outliers, AA baselines, instrumentation, and assignment quality before claiming a business explanation.
+  - 如果数据源提供了进组样本、分流或基线信息，就先看这些有效性信号；如果没有，就明确这部分暂时无法判断。  
+    If the source provides assignment counts, traffic-split details, or baseline checks, review them first; if not, state clearly that this validity check cannot be completed.
+  - 常见检查包括：`SRM`、离群值、AA 基线、埋点或分流问题。  
+    Common checks include `SRM`, outliers, AA baselines, instrumentation, and assignment quality.
 - 外部 / 产品归因  
   - 看版本更新、Bug、运营活动、按钮打架、误触等外部或交互因素。  
     Check app versions, bugs, ops events, button conflicts, accidental taps, and other external or interaction-driven factors.
@@ -471,6 +492,44 @@ A simple memory aid is:
 
 - 先对齐口径，再解释现象。  
   align caliber first, explain the movement second
+
+## Global vs Segment Reading | 大盘与切片怎么看
+
+大盘和切片，不建议用同一套宽松标准来读。  
+Global results and slice results should not be read with the same loose standard.
+
+- `Global`
+  - 更看统计稳健性。  
+    Focus more on statistical stability.
+  - 默认先看 `p < 0.05`、置信区间是否跨 `0`；如果数据源提供了进组样本与分流信息，再补做 `SRM` 检查。  
+    By default, check `p < 0.05` and whether the confidence interval crosses `0`; if assignment counts and split details are available, then also check `SRM`.
+  - 即使显著，也要继续看业务幅度是否足够有意义。  
+    Even if significant, still check whether the business magnitude is meaningful.
+
+- `Segment`
+  - 更看一致性，而不是只看单个显著。  
+    Focus more on consistency than on a single significant point.
+  - 默认把关键切片收紧到 `p < 0.03`。  
+    By default, use a tighter `p < 0.03` threshold for key slices.
+  - 但即使过了 `p < 0.03`，也还要看：
+    - 方向是否和大盘一致  
+      whether the direction is aligned with the global result
+    - 相邻链路指标是否也同向  
+      whether adjacent metrics in the chain move in the same direction
+    - 有没有合理业务逻辑支撑  
+      whether there is a credible business explanation
+  - 如果只是很窄的小切片单点显著，而大盘和相邻切片都不支持，优先降级成监控项或待验证假设。  
+    If only a very narrow slice is significant while the global result and nearby slices do not support it, downgrade it into monitoring or a hypothesis to verify.
+  - 做异质性排查时，可以检查是否存在“局部表现更好，但整体没有完全体现”的现象；如果缺少结构信息，这类判断应保守写成异质性提示或待验证假设。  
+    When checking heterogeneity, it is reasonable to ask whether some local strength is not fully reflected at the overall level; if structure information is incomplete, keep this as a cautious heterogeneity note or a hypothesis to verify.
+
+一个简单记法是：  
+A simple memory aid is:
+
+- 大盘看稳健性  
+  Global focuses on stability
+- 切片看一致性  
+  Segments focus on consistency
 
 ## Truthfulness First | 数据真实性第一
 
