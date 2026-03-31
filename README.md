@@ -181,7 +181,74 @@ You do not need to remember the internal helper skills. In most cases, calling `
 
 ### 5. Usage Guide | 使用指南
 
-#### Scenario 1: Knowledge Ingestion | 场景一：纯知识入库（防瞎猜备用）
+#### Scenario 1: Report Generation | 场景一：一键生成实验报告
+
+适用场景：  
+Use this when:
+
+- 实验观测期结束，数据已经就绪  
+  the experiment observation window has ended and data is ready
+- 需要基于 PRD + raw data 文档快速生成标准化实验报告  
+  you want a standardized report from PRD + raw data documents
+
+你可以直接这样说 👇  
+You can say:
+
+```text
+Please use tt-ab-analysis-framework to generate an experiment report.
+Experiment name (optional): [example: DM Personalized Bubble]
+PRD link: [URL]
+Raw Data link: [URL]
+```
+
+系统会这样处理：  
+What the system will do:
+
+- 串行执行 doc-first 分析流程  
+  run the doc-first analysis workflow
+- 静默优先读取已入库的指标字典和业务知识  
+  silently prioritize stored metric glossary and business knowledge
+- 在需要时做多维归因、风险梳理和证据边界标注  
+  perform drill-down attribution, risk review, and evidence-boundary labeling when needed
+- 输出结构化实验报告，而不是零散分析片段  
+  output a structured experiment report rather than scattered analysis fragments
+
+#### Scenario 2: Report Generation with Temporary Guidance | 场景二：带临时指标说明的实验报告
+
+适用场景：  
+Use this when:
+
+- 本期实验有临时监控指标  
+  this experiment includes a temporary monitoring metric
+- 本次需要一个临时极性或解释规则  
+  this run needs a temporary polarity or interpretation rule
+- 你不希望把它永久写入知识库  
+  you do not want to save it permanently into the knowledge base
+
+你可以直接这样说 👇  
+You can say:
+
+```text
+Please use tt-ab-analysis-framework to generate an experiment report with this temporary metric/rule guidance.
+Experiment name (optional): [xxx]
+PRD link: [URL]
+Raw Data link: [URL]
+Temporary metric guidance: [example: click_report increasing means worsening risk in this experiment]
+```
+
+系统会这样处理：  
+What the system will do:
+
+- 只在当前运行中应用这条临时说明  
+  apply the temporary instruction for the current run only
+- 在归因和极性判断中优先使用该临时说明  
+  prioritize it during attribution and polarity judgment
+- 不自动写回长期知识库  
+  do not write it back into the long-term knowledge base unless explicitly asked
+- 仍然遵守框架硬规则，不会因为临时说明而放宽数据纪律  
+  still obey hard framework rules and never relax data discipline because of a temporary note
+
+#### Scenario 3: Knowledge Ingestion | 场景三：纯知识入库（防瞎猜备用）
 
 适用场景：  
 Use this when:
@@ -303,73 +370,6 @@ After review, use this flow:
    keep unfinished parts in `knowledge/drafts/`
 3. 下一轮只继续修还没定稿的部分  
    in the next round, continue only from the unfinished parts
-
-#### Scenario 2: Report Generation | 场景二：一键生成实验报告
-
-适用场景：  
-Use this when:
-
-- 实验观测期结束，数据已经就绪  
-  the experiment observation window has ended and data is ready
-- 需要基于 PRD + raw data 文档快速生成标准化实验报告  
-  you want a standardized report from PRD + raw data documents
-
-你可以直接这样说 👇  
-You can say:
-
-```text
-Please use tt-ab-analysis-framework to generate an experiment report.
-Experiment name (optional): [example: DM Personalized Bubble]
-PRD link: [URL]
-Raw Data link: [URL]
-```
-
-系统会这样处理：  
-What the system will do:
-
-- 串行执行 doc-first 分析流程  
-  run the doc-first analysis workflow
-- 静默优先读取已入库的指标字典和业务知识  
-  silently prioritize stored metric glossary and business knowledge
-- 在需要时做多维归因、风险梳理和证据边界标注  
-  perform drill-down attribution, risk review, and evidence-boundary labeling when needed
-- 输出结构化实验报告，而不是零散分析片段  
-  output a structured experiment report rather than scattered analysis fragments
-
-#### Scenario 3: Report Generation with Temporary Guidance | 场景三：带临时指标说明的实验报告
-
-适用场景：  
-Use this when:
-
-- 本期实验有临时监控指标  
-  this experiment includes a temporary monitoring metric
-- 本次需要一个临时极性或解释规则  
-  this run needs a temporary polarity or interpretation rule
-- 你不希望把它永久写入知识库  
-  you do not want to save it permanently into the knowledge base
-
-你可以直接这样说 👇  
-You can say:
-
-```text
-Please use tt-ab-analysis-framework to generate an experiment report with this temporary metric/rule guidance.
-Experiment name (optional): [xxx]
-PRD link: [URL]
-Raw Data link: [URL]
-Temporary metric guidance: [example: click_report increasing means worsening risk in this experiment]
-```
-
-系统会这样处理：  
-What the system will do:
-
-- 只在当前运行中应用这条临时说明  
-  apply the temporary instruction for the current run only
-- 在归因和极性判断中优先使用该临时说明  
-  prioritize it during attribution and polarity judgment
-- 不自动写回长期知识库  
-  do not write it back into the long-term knowledge base unless explicitly asked
-- 仍然遵守框架硬规则，不会因为临时说明而放宽数据纪律  
-  still obey hard framework rules and never relax data discipline because of a temporary note
 
 ## Repository Structure | 仓库结构
 
