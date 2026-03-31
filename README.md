@@ -258,6 +258,246 @@ In short:
 - `D` 做检查  
   `D` checks the output
 
+## Metric Tiers | 指标分层与职责
+
+这套框架默认把指标分成三层来看。这样做的目的，不是把指标机械分类，而是帮助我们在写结论时分清“谁负责主结论、谁负责护栏、谁负责异常补充”。  
+This framework uses three metric tiers by default. The goal is not to label metrics mechanically, but to clarify which metrics support the main conclusion, which ones act as guardrails, and which ones serve as anomaly-monitoring support.
+
+- `Tier A`（主归因层）
+  - 这层通常对应 PRD 目标、业务域核心指标、success metrics。  
+    This tier usually maps to PRD targets, domain-core metrics, and success metrics.
+  - 它主要用于主结论和深度归因。  
+    It is mainly used for the main conclusion and deeper attribution.
+  - 如果报告最后只允许留下最关键的 1 到 3 个结果，通常优先从这一层里选。  
+    If the report only highlights the most important 1 to 3 results, they usually come from this tier first.
+
+- `Tier B`（护栏 / 传导层）
+  - 这层通常放公司核心、APP 必看、DAU、留存、性能，以及重要副作用指标。  
+    This tier usually includes company-core metrics, app-level must-watch metrics, DAU, retention, performance, and major side-effect indicators.
+  - 它主要用于判断实验有没有劣化风险、稳定性问题，或者收益是否伴随明显代价。  
+    It is mainly used to judge whether the experiment introduces degradation, stability problems, or meaningful tradeoffs.
+  - 这层不一定主导“收益成立”，但会强烈影响“能不能推、要不要保守”。  
+    This tier may not decide whether the gain exists, but it strongly affects whether rollout should be conservative.
+
+- `Tier C`（全量监控层）
+  - 这层通常放没有被 Tier A / Tier B 覆盖，但出现显著异动的长尾指标和关键切片异常。  
+    This tier usually covers long-tail metrics and important slice anomalies that are not already covered by Tier A or Tier B.
+  - 它主要用于监控、风险补充和异常留痕。  
+    It is mainly used for monitoring, risk supplementation, and anomaly logging.
+  - 它可以帮助解释现象、提醒后续关注点，但不应该抢主结论。  
+    It can help explain observations and flag follow-up areas, but it should not take over the main conclusion.
+
+一个简单记法是：  
+A simple memory aid is:
+
+- `Tier A` 决定“核心结果是什么”  
+  `Tier A` defines the core result
+- `Tier B` 决定“这个结果稳不稳、值不值得推”  
+  `Tier B` determines whether that result is safe and rollout-worthy
+- `Tier C` 决定“还有哪些异常值得记下来，但不该喧宾夺主”  
+  `Tier C` captures anomalies worth recording without letting them dominate the story
+
+## Recall and Priority | 强制召回与优先级表达法
+
+除了给指标分层，这套框架还会区分两件事：  
+Beyond metric tiering, the framework keeps two separate questions apart:
+
+- 哪些指标必须被召回进分析全集  
+  which metrics must be recalled into the analysis universe
+- 哪些指标最后值得进入主结论  
+  which metrics deserve to enter the main conclusion
+
+这两件事不是一回事。  
+These are not the same thing.
+
+### 召回全集（不能漏）| Recall Universe
+
+默认必须召回这些内容：  
+By default, recall all of the following:
+
+- `Tier A`
+  - PRD 目标、业务域核心、success metrics  
+    PRD targets, business-core metrics, and success metrics
+- `Tier B`（核心 / 必看）
+  - 公司核心、APP 必看、DAU、留存、性能、重要副作用  
+    company-core, app-level must-watch metrics, DAU, retention, performance, and major side effects
+- `PRD` 明确点名的目标或护栏  
+  - anything explicitly named in the PRD as a target or guardrail
+- 整体显著结果
+  - 默认指 global 层 `p < 0.05` 的结果  
+    by default, global results with `p < 0.05`
+- 关键维度显著结果
+  - 默认指关键维度上 `p < 0.03` 的结果  
+    by default, key-dimension results with `p < 0.03`
+
+### 表达优先级 | Expression Priority
+
+被召回，不等于被拔高。  
+Being recalled does not automatically mean being elevated.
+
+- 主结论通常只保留 `1-3` 个最关键结果。  
+  The main conclusion usually keeps only `1-3` of the most important results.
+- 主结论的排序应围绕 PRD 主目标来组织。  
+  Main-conclusion ordering should be organized around the primary PRD objective.
+- 进入全集但不属于主结论的指标，应降级进入这些位置：  
+  Metrics that are recalled but do not belong in the main conclusion should be downgraded into:
+  - 监控与风险  
+    monitoring and risk
+  - 异常长尾  
+    long-tail anomalies
+  - 核心护栏稳定项列表  
+    stable core-guardrail lists
+  - 数据附录  
+    appendices
+
+一个实用记法是：  
+A practical memory aid is:
+
+- “召回”解决的是不要漏看  
+  recall solves coverage
+- “优先级”解决的是不要乱拔高  
+  priority solves overpromotion
+
+## Attribution Discipline | 归因平权与防因果过推
+
+这套框架不要求所有归因都来自同一种证据。更稳的做法是：哪条证据链能闭环，就优先用哪条。  
+The framework does not require every attribution to come from the same kind of evidence. A safer rule is: use whichever evidence chain can actually close the loop.
+
+默认平权看三类归因证据：  
+By default, treat these three attribution routes as equally valid:
+
+- 物理 / 布局证据  
+  physical / layout evidence
+- 机制 / 传导链路证据  
+  mechanism / transmission-chain evidence
+- 数据下钻 / 切片证据  
+  drilldown / slice evidence
+
+它们之间不是谁天然更高级，而是谁更能把“现象 -> 解释”说清楚。  
+None of them is inherently superior; the useful one is the one that best connects the observation to the explanation.
+
+做归因时，建议明确标注：  
+When making an attribution, label it clearly when useful:
+
+- `[直接证据]`
+  - 例如：PRD 明确写了入口变化，数据也刚好在对应链路上提升  
+    for example, the PRD explicitly changes an entry point and the linked metrics move accordingly
+- `[间接证据]`
+  - 例如：主链路提升明显，但中间机制只能通过相邻行为去推断  
+    for example, the main path improves clearly, but the mechanism is inferred through adjacent behaviors
+- `[待验证假设]`
+  - 例如：存在一个合理解释，但当前还缺少足够数据把它坐实  
+    for example, the explanation is plausible, but current evidence is not enough to confirm it
+
+同时要守住两个边界：  
+At the same time, keep two boundaries:
+
+- 严禁无客观数据支撑的心理学臆测。  
+  Do not invent psychology without objective support.
+- 严禁无证据支撑的主观动机揣测。  
+  Do not speculate about user motivation without evidence.
+
+一句话记法：  
+A simple memory aid is:
+
+- 归因可以大胆找，但结论必须老实写。  
+  Attribution can be exploratory, but conclusions must stay honest.
+
+## Metric-Caliber Discipline | 严守口径底线
+
+在解释任何异动之前，先把口径对齐。  
+Before explaining any anomaly, align the metric caliber first.
+
+默认至少检查这几件事：  
+At minimum, check these:
+
+- 定义  
+  definition
+- 分母  
+  denominator
+- 去重规则  
+  dedup rule
+- 窗口  
+  window
+- 时间粒度  
+  time granularity
+
+如果这些还没对齐，就不要急着下强结论。  
+If these are not aligned yet, do not rush into a strong conclusion.
+
+这套框架默认还有一个专门提醒：  
+The framework also keeps one explicit reminder here:
+
+- `DAU` 主要代表样本量和规模背景。  
+  `DAU` mainly reflects sample size and scale context.
+- 它可以帮助判断覆盖范围和体量变化。  
+  It can help describe coverage and scale.
+- 但它本身不应该被当成效果提升或效果劣化的直接结论。  
+  But it should not by itself be used as the direct conclusion for treatment effect.
+
+一个简单记法是：  
+A simple memory aid is:
+
+- 先对齐口径，再解释现象。  
+  align caliber first, explain the movement second
+
+## Truthfulness First | 数据真实性第一
+
+这套框架默认把“数据真实性”放在最前面。  
+This framework puts data truthfulness first.
+
+如果出现冲突，默认优先级是：  
+When tradeoffs appear, the default priority is:
+
+1. 防造假 / 防抄错  
+   prevent fabrication and copying mistakes
+2. 与 PRD 对齐  
+   stay aligned with the PRD
+3. 再考虑推演是否漂亮、表述是否高级  
+   only then optimize the elegance or sophistication of the interpretation
+
+也就是说：  
+In practice, this means:
+
+- 宁可少说，也不要写错。  
+  it is better to say less than to say something wrong
+- 宁可保守，也不要为了“像个完整报告”去补猜。  
+  it is better to stay conservative than to guess just to make the report feel complete
+
+## Conservative by Default | 缺省保守推断
+
+当证据不足时，默认做保守表达。  
+When evidence is insufficient, default to conservative language.
+
+这时候应该明确区分三件事：  
+At that point, clearly separate these three things:
+
+- 能确认什么  
+  what can be confirmed
+- 还不能确认什么  
+  what cannot yet be confirmed
+- 哪些只是方向性判断  
+  what is only directional for now
+
+这套框架更偏向这样一种写法：  
+This framework prefers writing that is:
+
+- 保守  
+  conservative
+- 清晰  
+  clear
+- 可复核  
+  reviewable
+
+而不是：
+
+- 华丽  
+  flashy
+- 看起来很完整  
+  superficially complete
+- 但其实站不住  
+  yet not defensible
+
 ## Design Principle | 设计原则
 
 - `core/` 放稳定框架：流程、规则、运行约定。  
