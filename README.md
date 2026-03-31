@@ -32,6 +32,21 @@ If your environment supports `Mira` import, use this path first. It is the simpl
 
 - [`release/mira/4265debcbeff43bb84fc2072c0e034c0.zip`](release/mira/4265debcbeff43bb84fc2072c0e034c0.zip)
 
+最快的操作路径是：  
+The fastest path is:
+
+1. 在 `Lark` 里搜索 `Mira`  
+   Search for `Mira` in `Lark`
+2. 打开 `Mira` 应用  
+   Open the `Mira` app
+3. 点击 `skills` 图标  
+   Click the `skills` icon
+4. 上传上面的 zip 文件  
+   Upload the zip file above
+
+如果你的目标只是尽快开始用，这条路径最推荐。  
+If your goal is simply to get started quickly, this is the recommended path.
+
 #### Option B: Codex Local Skills | 安装到 Codex
 
 如果你是在本地 `Codex` 环境里开发或调试，可以这样安装主 skill：  
