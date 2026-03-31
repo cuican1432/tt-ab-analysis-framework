@@ -138,7 +138,7 @@ What the system will do:
   - first turn the raw source into a structured glossary draft,
   - then present a clear `to confirm` list instead of making the user find gaps manually,
   - then let the user review / correct missing or ambiguous fields,
-  - then consolidate the confirmed version into the reusable glossary.
+  - then partially ingest the confirmed entries into the formal glossary / business knowledge files while keeping unfinished parts in drafts.
 
 If more context is needed, read these framework files:
 
@@ -224,4 +224,5 @@ This means:
   - structured draft out,
   - explicit `to confirm` list,
   - user confirmation,
-  - formal glossary update.
+  - partial formal-knowledge update,
+  - unfinished parts stay in drafts.

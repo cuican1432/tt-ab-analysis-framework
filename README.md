@@ -169,6 +169,14 @@ In other words:
 - `drafts/` 不应该长期堆已经确认完的条目  
   `drafts/` should not keep confirmed entries forever
 
+更直白一点说：  
+Said more plainly:
+
+- 正式库 = 后续别的实验也能直接复用的知识  
+  formal knowledge = knowledge that future experiments can directly reuse
+- drafts = 还在 review、还不能直接信任的知识  
+  drafts = knowledge that is still under review and should not yet be treated as trusted by default
+
 如果你已经有一版 glossary 初稿，可以直接这样说 👇  
 If you already have a glossary draft, you can say:
 
