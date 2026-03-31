@@ -20,9 +20,9 @@ This skill supports three common modes:
 Clone the framework locally:
 
 ```bash
-mkdir -p ~/workspace
-cd ~/workspace
-git clone <YOUR_GITHUB_URL>/tt-ab-analysis-framework.git
+mkdir -p ~/ab-workspace
+cd ~/ab-workspace
+git clone https://github.com/cuican1432/tt-ab-analysis-framework.git
 cd tt-ab-analysis-framework
 ```
 
