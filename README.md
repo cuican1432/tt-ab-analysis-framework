@@ -20,18 +20,17 @@ git clone https://github.com/cuican1432/tt-ab-analysis-framework.git
 cd tt-ab-analysis-framework
 ```
 
-### 2. Install the Main Skill | 安装主 Skill
+### 2. Install the Skills | 安装 Skills
+
+#### Option A: Codex Local Skills | 安装到 Codex
 
 如果你是 Codex 风格本地 skill 环境，可以这样安装主 skill：  
-For a Codex-style local skill setup, install the main skill like this:
+For a Codex-style local skill setup:
 
 ```bash
 mkdir -p ~/.codex/skills/tt-ab-analysis-framework
 cp -R skills/tt-ab-analysis-framework/. ~/.codex/skills/tt-ab-analysis-framework/
 ```
-
-主 skill 当前已经是自包含结构，复制这个目录时会一并带上它依赖的 `references/`。  
-The main skill is self-contained, so copying this directory also copies the `references/` files it depends on.
 
 如果你也想安装辅助 skill：  
 If you also want the helper skills:
@@ -44,8 +43,46 @@ mkdir -p ~/.codex/skills/ab-metric-glossary
 cp -R skills/ab-metric-glossary/. ~/.codex/skills/ab-metric-glossary/
 ```
 
-这两个 helper skill 现在也都是自包含结构，复制目录时会一并带上它们依赖的 `references/`。  
-These two helper skills are also self-contained now, so copying the directory also carries their required `references/`.
+#### Option B: Trae Local Skills | 安装到 Trae
+
+如果你是 Trae 本地环境，skill 目录建议放到：  
+If you are using Trae locally, install the skills into:
+
+```bash
+mkdir -p /Users/bytedance/Documents/trae_projects/.trae/skills/tt-ab-analysis-framework
+cp -R skills/tt-ab-analysis-framework/. /Users/bytedance/Documents/trae_projects/.trae/skills/tt-ab-analysis-framework/
+
+mkdir -p /Users/bytedance/Documents/trae_projects/.trae/skills/ab-experiment-analyst
+cp -R skills/ab-experiment-analyst/. /Users/bytedance/Documents/trae_projects/.trae/skills/ab-experiment-analyst/
+
+mkdir -p /Users/bytedance/Documents/trae_projects/.trae/skills/ab-metric-glossary
+cp -R skills/ab-metric-glossary/. /Users/bytedance/Documents/trae_projects/.trae/skills/ab-metric-glossary/
+```
+
+#### Option C: Mira Zip Import | 用 Mira Zip 导入
+
+如果你的环境更适合 zip 导入，可以使用仓库里这份包：  
+If your environment prefers zip-based import, use this package in the repo:
+
+- [`release/mira/4265debcbeff43bb84fc2072c0e034c0.zip`](release/mira/4265debcbeff43bb84fc2072c0e034c0.zip)
+
+#### Important Runtime Note | 运行时注意事项
+
+主 skill 和 helper skills 当前都是自包含结构，复制目录时会一并带上它们依赖的 `references/`。  
+The skills are self-contained, so copying the directories also carries the required `references/`.
+
+但如果你是在 Trae / OpenClaw 一类环境里跑浏览器或文档读取，还需要额外确认 MCP 能力是否已经装好。  
+If you are using Trae / OpenClaw for browser or document reading, you still need to make sure the required MCP capabilities are installed.
+
+当前更稳的默认理解是：  
+The safer default assumption right now is:
+
+- 技能本身可以直接安装  
+  the skills themselves can be installed directly
+- 浏览器读取通常还需要额外的 Playwright / browser MCP  
+  browser reading usually still needs an extra Playwright / browser MCP setup
+- 某些环境不一定支持直接接入文书/文档工具，因此可能需要回退到浏览器读取或 zip 导入路径  
+  some environments may not support direct document connectors, so you may need to fall back to browser reading or zip import
 
 ### 2.5 Smoke Test Case | 烟测案例
 
