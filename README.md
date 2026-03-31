@@ -27,7 +27,9 @@ The fastest path is:
    Open the `Mira` app
 3. 点击 `skills` 图标  
    Click the `skills` icon
-4. 上传上面的 zip 文件  
+4. 点击 `Manage Skills`  
+   Click `Manage Skills`
+5. 上传上面的 zip 文件  
    Upload the zip file above
 
 如果你的目标只是尽快开始用，这条路径最推荐。  
