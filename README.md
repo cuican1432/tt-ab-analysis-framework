@@ -25,8 +25,8 @@ Recommended default install:
 - `Mira` 版 `tt-ab-analysis-framework` 安装包：  
   [`release/mira/tt-ab-analysis-framework-mira.zip`](release/mira/tt-ab-analysis-framework-mira.zip)
 
-如果你也想把 helper skills 一起装上，再补这两个：  
-If you also want the helper skills, upload these too:
+如果你也想把更细的分析能力一起装上，再补这两个专项 skill：  
+If you also want the more specialized analysis skills, upload these too:
 
 - [`release/mira/ab-experiment-analyst-mira.zip`](release/mira/ab-experiment-analyst-mira.zip)
 - [`release/mira/ab-metric-glossary-mira.zip`](release/mira/ab-metric-glossary-mira.zip)
@@ -44,8 +44,8 @@ The fastest path is:
    Click `Manage Skills`
 5. 先上传主 skill 的 zip 文件  
    Upload the main skill zip first
-6. 如果需要，再继续上传 helper skill 的 zip 文件  
-   If needed, continue by uploading the helper skill zips
+6. 如果需要，再继续上传专项分析 skill 的 zip 文件  
+   If needed, continue by uploading the specialist analysis skill zips
 
 如果你的目标只是尽快开始用，这条路径最推荐。  
 If your goal is simply to get started quickly, this is the recommended path.
