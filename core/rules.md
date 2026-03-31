@@ -100,6 +100,15 @@ Use whichever route closes the explanation loop best.
 
 Do not invent psychology or user motivation without hard support.
 When reading product-mechanism differences from a PRD, read concrete deltas at the feature level: entry points, triggers, page flow, permissions, supported objects, interaction changes, and effect scope.
+When possible, connect attribution as a usable chain rather than a loose observation list:
+
+- product / UX delta,
+- the most credible mechanism, path, or structural change,
+- metric movement,
+- business implication,
+- and the remaining uncertainty or next validation step.
+
+Prefer this kind of chain when the source supports it, but do not force a fake chain when the middle steps are missing.
 
 When investigating attribution, check the most relevant of these directions:
 
@@ -141,10 +150,18 @@ Treat `DAU` as a scale / sample-size signal, not as a direct treatment-effect co
 - Use business themes, not raw page order, as the main narrative structure.
 - Keep risk and benefit at the same level of visibility.
 - Name representative metrics and values when making a business-theme claim.
+- For each major benefit or risk, try to explain not just what moved, but what business theme it represents.
+- When the source is strong enough, push the write-up one layer deeper than metric listing:
+  - what changed in the product,
+  - which user path was likely affected,
+  - which metrics moved,
+  - what that means for the business,
+  - and what still needs validation.
 - For multi-arm experiments, do not describe each arm in isolation only.
 - For multi-arm experiments, explicitly state which arm is better, which arm is weaker, and what the decision implication is.
 - If there are multiple treatment arms, include a dedicated comparison section so the reader can see the strict arm-to-arm differences, not just separate summaries.
 - Only make detailed product-mechanism comparisons when the source explicitly exposes the relevant configuration or description differences for those arms.
+- Do not stop at "risk exists" or "benefit exists" when the report needs to support action. If the source allows it, add the most reasonable next action, validation ask, or rollout implication.
 - When evidence is insufficient, explicitly separate:
   - what is confirmed,
   - what is not confirmed,

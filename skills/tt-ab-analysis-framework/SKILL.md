@@ -169,6 +169,12 @@ Use these knowledge files as the main reusable knowledge store:
 - Use drilldown and slice evidence to explain why the global result holds.
 - If the PRD contains product images, UI mocks, or annotated screenshots, read them as part of the PRD whenever the model/runtime has image-reading ability.
 - When reading PRD changes or arm differences, do not stop at one-line summaries; read down to concrete product deltas such as entry points, triggers, page flow, permissions, supported objects, interaction changes, and effect scope.
+- When writing the report, do not stop at metric listing when the source is rich enough. Try to connect:
+  - product delta,
+  - the most credible mechanism, path, or structural change,
+  - metric movement,
+  - business meaning,
+  - and next validation or rollout implication.
 - When knowledge ingestion is requested, organize raw knowledge into a structured draft first if the source is long, mixed, or incomplete.
 - Treat the business knowledge layer as index-first.
 - Do not read or summarize the entire business KB by default; locate the relevant topic and pull only what the current case needs.
@@ -218,6 +224,7 @@ This means:
 - For multi-arm experiments, include a dedicated comparison section instead of leaving the comparison implicit across separate sections.
 - Do not write fine-grained product-mechanism differences across arms unless the source explicitly shows the relevant config or description differences.
 - If the PRD includes product screenshots, mocks, or visual diff tables that clarify arm differences, treat them as source evidence and read them before writing mechanism comparisons.
+- For major benefit and risk sections, do not leave the report at "metric moved". When the source allows it, explain what path changed, why that matters for the business, and what should happen next.
 - If a glossary or knowledge-base source is incomplete, fill only what can be confirmed and leave the rest blank for user review.
 - For glossary ingestion, the expected collaboration loop is:
   - source knowledge in,
