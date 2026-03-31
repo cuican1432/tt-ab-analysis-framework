@@ -56,6 +56,10 @@ If you want to quickly verify that the framework really works, start with this r
   - Raw Data: [Lark Raw Data Doc](https://bytedance.larkoffice.com/docx/L2kwdjvt5oLCwsxbB7Wc6uMRnud)
   - PRD: [Lark PRD](https://bytedance.larkoffice.com/wiki/BT70wFcLAi5eh3k2ihJc4LCynWe)
 
+- `DM Card UI Optimization / 私信卡片 UI 优化`
+  - Raw Data: [Lark Raw Data Doc](https://bytedance.larkoffice.com/docx/GTtkd0Ixnos3VExjttecsuKEnxp)
+  - PRD: [Lark PRD](https://bytedance.sg.larkoffice.com/docx/GNMUdHluloFyw3xeaSklIAaSgee)
+
 最简单的验证方式是：  
 The simplest validation flow is:
 
