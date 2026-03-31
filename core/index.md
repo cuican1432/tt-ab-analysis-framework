@@ -44,3 +44,25 @@ The simplest mental model is:
 - `tooling.md`
   - tool preferences and browser guidance
   - when to use docs, exports, or browser reading
+
+## Editing Boundary
+
+Use this simple split:
+
+- usually protected
+  - `workflow.md`
+  - `rules.md`
+  - the main skill's guardrails
+- safe to extend
+  - `knowledge/metric_glossary.md`
+  - `knowledge/business_kb.md`
+- change with a short rationale
+  - `runbook.md`
+  - `tooling.md`
+  - `README.md`
+
+Practical reminder:
+
+- update knowledge often,
+- change rules carefully,
+- and do not change source-truth or evidence-discipline rules casually.

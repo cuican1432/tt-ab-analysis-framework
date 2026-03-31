@@ -249,6 +249,114 @@ You can read the files under `core/` like this:
   - 讲总导航，帮你决定先看哪份文件。  
     Acts as the navigation page that helps you decide what to open first.
 
+## What to Edit, What Not to Edit | 哪些可以改，哪些最好别动
+
+为了让这套框架既能持续演进，又不容易被改乱，可以先把文件分成三类来看：  
+To keep the framework evolvable without becoming messy, it helps to think of files in three groups:
+
+### 1. Protected / Better Not Touch | 保护层：最好不要随手改
+
+这类内容建议只由框架维护者统一调整：  
+These are best changed only by framework maintainers:
+
+- `core/rules.md`
+  - 尤其是 `Hard Rules`、证据纪律、source 边界、multi-arm 对比这类底线规则。  
+    Especially `Hard Rules`, evidence discipline, source boundaries, and multi-arm comparison rules.
+- `core/workflow.md`
+  - 默认 A / B / C / D 流程、doc-first 路径、什么时候允许进入 live 分支。  
+    The default A / B / C / D flow, doc-first path, and when live branches are allowed.
+- `skills/tt-ab-analysis-framework/SKILL.md`
+  - 主 skill 的 guardrails、优先级和主入口行为。  
+    The main skill's guardrails, precedence, and user-facing entry behavior.
+
+简单说：  
+In short:
+
+- 不要轻易改“不能编造、不能复用旧实验、必须 fresh 读 source、Global 优先、multi-arm 必须显式对比”这些规则。  
+  Do not casually change rules such as no fabrication, no reuse of old experiments, fresh source rereads, global-over-slice, or explicit multi-arm comparison.
+
+### 2. Safe to Extend | 可安全扩展层：用户可以直接补
+
+这类内容最适合业务同学和使用者日常补充：  
+These are the best places for day-to-day user and domain updates:
+
+- `knowledge/metric_glossary.md`
+  - 指标释义、极性、相邻指标区别、召回提示。  
+    Metric meaning, polarity, neighboring-metric distinctions, and recall hints.
+- `knowledge/business_kb.md`
+  - 业务术语、产品机制、常见口径说明、domain note。  
+    Business terms, product mechanisms, common caliber notes, and domain knowledge.
+
+这类文件可以持续长大。  
+These files are expected to keep growing over time.
+
+### 3. Careful / Review Before Changing | 谨慎修改层：最好先说明再改
+
+这类内容不是绝对不能动，但建议先写明原因：  
+These files are not forbidden to change, but should usually be changed with a clear rationale:
+
+- `core/runbook.md`
+  - 更像执行偏好和落地经验。  
+    More like execution preferences and practical operating guidance.
+- `core/tooling.md`
+  - 工具优先级和 source 路径。  
+    Tool preferences and source-path choices.
+- `README.md`
+  - 对外入口文档，改动会直接影响新用户理解。  
+    The public entry document; changes directly affect onboarding.
+
+## How to Write Updates | 修改时最好怎么写
+
+推荐按文件类型写，不要混着补：  
+Prefer writing updates in a file-type-specific way instead of mixing everything together.
+
+### 改 glossary 时
+
+建议写成这种粒度：  
+Use a structure like this:
+
+```text
+Metric: block/user
+Meaning: 用户拉黑行为强度
+Polarity: lower is better
+Why it matters: 常作为负反馈风险指标
+Neighbor note: 不等于 report/user
+Source: PRD / raw data / team convention
+```
+
+### 改 business knowledge 时
+
+建议补“这是什么 + 什么时候成立 + 不代表什么”：  
+Prefer adding “what it is + when it applies + what it does not mean”:
+
+```text
+Concept: Bubble customization
+What it is: 用户可进入页面修改自己的消息气泡
+Applies when: PRD 明确开放设置入口和保存生效链路
+Does not mean: 仅看到别人气泡不等于可自定义
+Source: PRD screenshots + requirement text
+```
+
+### 改规则时
+
+不要直接只改一句，最好带一个简短变更说明：  
+Do not just replace one line silently; include a short change note:
+
+```text
+Change proposal:
+- Current rule:
+- Proposed rule:
+- Why:
+- Scope:
+- Example case:
+```
+
+最重要的一条：  
+The most important rule is:
+
+- **知识可以经常补，规则不要轻易改。**  
+  **Knowledge should be updated often; rules should not be changed casually.**
+
 ## How A / B / C / D Fit Together | A / B / C / D 架构说明
 
 这个框架内部虽然会分成 A / B / C / D 四个阶段，但你可以把它理解成一条很直观的流水线：  

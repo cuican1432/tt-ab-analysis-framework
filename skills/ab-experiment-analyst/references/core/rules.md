@@ -2,6 +2,8 @@
 
 ## Hard Rules
 
+Maintainer-owned. Do not casually change this section.
+
 - Never fabricate metrics, setup fields, or conclusions.
 - Keep missing data missing.
 - Keep non-significant results directional, not overstated.
@@ -10,7 +12,11 @@
 - Finished outputs from one experiment belong to that experiment only.
 - Never reuse an old experiment's finished tables, conclusions, or report as evidence for a new experiment.
 
-## Priority of Truth
+## Default Rules
+
+Framework defaults live here. These rules are stable and should be changed carefully, but they are not as absolute as the hard rules above.
+
+### Priority of Truth
 
 Use this default priority:
 
@@ -18,7 +24,7 @@ Use this default priority:
 2. stay aligned with the PRD
 3. optimize interpretation quality only after the first two are secure
 
-## Evidence Discipline
+### Evidence Discipline
 
 - Global evidence drives the decision.
 - Multi-dimensional evidence explains why the global result holds.
@@ -34,7 +40,7 @@ For significance reading:
 - if a narrow slice is significant but the global result and nearby slices do not support it, treat it as monitoring or a hypothesis to verify
 - when checking heterogeneity, it is valid to note that some local gains may not fully show up at the overall level; if structure information is incomplete, keep this as a cautious heterogeneity note or a hypothesis to verify
 
-## Metric Tiering
+### Metric Tiering
 
 Use three default tiers:
 
@@ -50,7 +56,7 @@ Use three default tiers:
 
 Do not let Tier C dominate the main conclusion unless the source explicitly proves it should.
 
-## Recall and Priority
+### Recall and Priority
 
 Separate these two questions:
 
@@ -76,7 +82,7 @@ Priority rules:
   - stable guardrail lists,
   - or appendices
 
-## Attribution Discipline
+### Attribution Discipline
 
 Use evidence from three equal routes:
 
@@ -115,7 +121,7 @@ When investigating attribution, check the most relevant of these directions:
 
 Do not try to force every attribution through all directions. Use the directions that can actually explain the movement.
 
-## Metric-Caliber Discipline
+### Metric-Caliber Discipline
 
 Before interpreting an anomaly, align:
 
@@ -129,7 +135,7 @@ If caliber is unclear, do not make a strong claim.
 
 Treat `DAU` as a scale / sample-size signal, not as a direct treatment-effect conclusion.
 
-## Report Discipline
+### Report Discipline
 
 - Write the report as a decision memo, not a data dump.
 - Use business themes, not raw page order, as the main narrative structure.
