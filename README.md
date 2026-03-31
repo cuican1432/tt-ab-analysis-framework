@@ -16,20 +16,10 @@ Recommended path: use `Mira` to import the zip package first.
 如果你的环境支持 `Mira` 导入，优先用这条路径，最省事，也最接近分发态。  
 If your environment supports `Mira` import, use this path first. It is the simplest and closest to the distribution flow.
 
-`Mira` 当前更适合按 **一个 skill 对应一个 zip** 的方式上传。  
-`Mira` currently works better when you upload **one zip per skill**.
+推荐直接上传这个 `Mira` 版 `tt-ab-analysis-framework` 安装包：  
+Recommended package:
 
-推荐默认先装主 skill：  
-Recommended default install:
-
-- `Mira` 版 `tt-ab-analysis-framework` 安装包：  
-  [`release/mira/tt-ab-analysis-framework-mira.zip`](release/mira/tt-ab-analysis-framework-mira.zip)
-
-如果你也想把更细的分析能力一起装上，再补这两个专项 skill：  
-If you also want the more specialized analysis skills, upload these too:
-
-- [`release/mira/ab-experiment-analyst-mira.zip`](release/mira/ab-experiment-analyst-mira.zip)
-- [`release/mira/ab-metric-glossary-mira.zip`](release/mira/ab-metric-glossary-mira.zip)
+- [`release/mira/5d6814b26982409ba24d10d9a4e0c04c.zip`](release/mira/5d6814b26982409ba24d10d9a4e0c04c.zip)
 
 最快的操作路径是：  
 The fastest path is:
@@ -42,10 +32,8 @@ The fastest path is:
    Click the `skills` icon
 4. 点击 `Manage Skills`  
    Click `Manage Skills`
-5. 先上传主 skill 的 zip 文件  
-   Upload the main skill zip first
-6. 如果需要，再继续上传专项分析 skill 的 zip 文件  
-   If needed, continue by uploading the specialist analysis skill zips
+5. 上传上面的 zip 文件  
+   Upload the zip file above
 
 如果你的目标只是尽快开始用，这条路径最推荐。  
 If your goal is simply to get started quickly, this is the recommended path.
